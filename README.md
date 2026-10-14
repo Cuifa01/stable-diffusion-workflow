@@ -81,6 +81,12 @@ The Showcase and comparison grids use the **same author-confirmed reference setu
 
 **Reproduction note:** This table describes the author's confirmed common test setup, not independently verified metadata for every exported image. The re-uploaded Showcase PNG has no readable parameter block. See [`configs/baseline.yaml`](configs/baseline.yaml) and [`docs/workflow.md`](docs/workflow.md).
 
+### Current Personal Settings
+
+My current NeoForge settings use a **832 × 1152** base canvas, **CFG 3.5**, and **Batch Count / Batch Size = 1 / 1**. When I choose to enable optional **Hires.fix**, the configured values shown in my UI are **2× upscaling**, **12 Hires steps**, **0.2 denoising strength**, **Hires CFG 3**, and a **4xNMKDSuperscale** upscaler (full displayed selection name to be confirmed).
+
+These are **current usage preferences**, not verified parameters for every published test image. See [`configs/personal-preferences.md`](configs/personal-preferences.md) for the full settings and their scope.
+
 ## 8. Practical Experience & Limitations
 
 - **Face refinement:** The base model's default facial details do not always meet my expectations. I use **ADetailer** when targeted refinement improves the expression and eye details without losing the intended style.
