@@ -22,13 +22,7 @@ These values are based on the author's confirmation and earlier repository docum
 
 ![Euler, Euler a, and Kohaku LoNyu Yog](../examples/sampler-comparison.jpg)
 
-**Visible, style-specific observations:**
-
-- **Euler:** Unexpected color patches appear around portions of the hair edges.
-- **Euler a:** The distribution of highlights and shadows in the hair appears irregular and cluttered.
-- **Kohaku LoNyu Yog:** The shading and hair contours look more coherent in this example, without comparably distracting lighting irregularities.
-
-**Conclusion:** For this personal anime-portrait style, the author favors Kohaku LoNyu Yog for a cleaner-looking result. The samples also differ in pose and composition; matched seeds do not guarantee identical composition across samplers. These observations are not proof of a general quality ranking.
+**Euler** shows unusual color patches along the hair edges and less distinct layering. **Euler a** has cluttered highlights and shadows in the hair. Both show some character-structure issues. **Kohaku LoNyu Yog** looks cleaner overall, with more coherent structure and lighting, and remains the author's preference for this style.
 
 [Sampler source](https://github.com/Koishi-Star/Euler-Smea-Dyn-Sampler).
 
