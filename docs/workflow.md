@@ -8,6 +8,8 @@
 
 The artist-tag mix and `nyalia` style LoRA form one fixed Signature Style Preset. The workflow currently treats these as a whole and does not attempt to attribute visual characteristics to individual artists. Exact text: [`style/signature-style.txt`](../style/signature-style.txt).
 
+LoRA source: [nyalia (Illustrious)](https://civitai.com/models/834822/nyalia-illustrious), used at weight `0.6`.
+
 ## Reference configuration for the published comparisons
 
 The author confirms that the comparisons are based on the same Showcase1 style, checkpoint, seed, and other settings **except the compared parameter**.
@@ -27,9 +29,9 @@ The re-uploaded Showcase PNG is **1479 × 2048** and contains no readable genera
 
 ## Sampler and Karras
 
-The preferred sampler is **Kohaku LoNyu Yog**, from [Koishi-Star/Euler-Smea-Dyn-Sampler](https://github.com/Koishi-Star/Euler-Smea-Dyn-Sampler). In the present sampler grid, Euler shows unexpected color patches near the hair edges; Euler a produces busier and less orderly hair lighting; Kohaku appears more cohesive without comparable distracting artifacts. These observations support a **personal preference for this image style**, not a universal claim.
+The preferred sampler is **Kohaku LoNyu Yog** from [Koishi-Star/Euler-Smea-Dyn-Sampler](https://github.com/Koishi-Star/Euler-Smea-Dyn-Sampler). In the comparison, **Euler** has color artifacts around the hair edges and less clear layering; **Euler a** has messier hair shading. Both show some structural issues. **Kohaku LoNyu Yog** gives the cleanest overall result for this style, with more coherent structure and lighting.
 
-**Karras** remains the fixed scheduler setting used with the preferred sampler. No scheduler comparison is presented in this version.
+**Karras** remains the chosen scheduler. No scheduler comparison is presented.
 
 ## Steps and CFG
 
