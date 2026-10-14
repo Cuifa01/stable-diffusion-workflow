@@ -122,3 +122,9 @@ See [`docs/comparisons.md`](docs/comparisons.md). No results are claimed for com
 6. Apply ADetailer only when desired, and record any high-resolution refinement separately. Exact face-refinement, upscale, base-size, and extension-version details still need to be documented.
 
 Different extensions, software versions, or hardware configurations may produce different results even when these recorded settings match.
+
+## 12. Project History & Current Status
+
+This personal Stable Diffusion workflow was first put into practice in **July 2025**. The workflow and its examples were only **recently organized and uploaded to GitHub**, so the repository's publication date does not reflect when the project began.
+
+I am currently **training a personal style LoRA** related to this workflow. This is ongoing work and is not presented here as a completed or released model.
