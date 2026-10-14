@@ -1,39 +1,55 @@
-# Planned and Current Comparisons
+# Comparison Notes — Showcase Reference
 
-These images are personal visual examples, not statistical evidence or universal performance claims.
+These are **personal visual comparisons**, not statistically controlled benchmarks or claims of general sampler superiority.
 
-## Current examples
+## Common reference setup
 
-### Sampler preference
+The author confirms that the test images use the same Showcase1 reference configuration unless a parameter is explicitly varied:
+
+| Item | Value |
+| --- | --- |
+| Checkpoint | `waiNSFWIllustrious_v150` |
+| Sampler | Kohaku LoNyu Yog (varied in sampler grid) |
+| Scheduler | Karras |
+| Steps | 20 (varied in steps grid) |
+| CFG scale | 3.5 |
+| Seed | `2601892452` |
+| Style | Fixed Signature Style Preset with `nyalia:0.6` |
+
+These values are based on the author's confirmation and earlier repository documentation. The newly uploaded Showcase export has **no readable PNG generation metadata**. Do not describe these parameters as extracted from that file.
+
+## Sampler: Euler / Euler a / Kohaku LoNyu Yog
 
 ![Euler, Euler a, and Kohaku LoNyu Yog](../examples/sampler-comparison.jpg)
 
-The grid compares Euler, Euler a, and Kohaku LoNyu Yog. Pose, composition, and details vary between panels, which limits direct attribution to the sampler. The author's practical preference is Kohaku LoNyu Yog + Karras for this style, especially for perceived line clarity, overall cleanliness, and visual appearance.
+**Visible, style-specific observations:**
 
-### Scheduler preference
+- **Euler:** Unexpected color patches appear around portions of the hair edges.
+- **Euler a:** The distribution of highlights and shadows in the hair appears irregular and cluttered.
+- **Kohaku LoNyu Yog:** The shading and hair contours look more coherent in this example, without comparably distracting lighting irregularities.
 
-![Normal, Uniform, and Karras](../examples/scheduler-comparison.jpg)
+**Conclusion:** For this personal anime-portrait style, the author favors Kohaku LoNyu Yog for a cleaner-looking result. The samples also differ in pose and composition; matched seeds do not guarantee identical composition across samplers. These observations are not proof of a general quality ranking.
 
-The supplied grid compares Normal, Uniform, and Karras. Its embedded X/Y/Z metadata records schedule type as the varied axis with Kohaku LoNyu Yog, 20 steps, CFG 3.5, seed `2601892452`, and `waiNSFWIllustrious_v150`. Normal and Uniform show similar poses; Karras changes the hand gesture and some background details. The author prefers Karras in this example. A single grid does not establish a general ranking, and composition changes limit specific line-quality comparisons.
+[Sampler source](https://github.com/Koishi-Star/Euler-Smea-Dyn-Sampler).
 
-### Sampling steps
+## Steps: 5 / 10 / 15 / 20 / 30 / 40
 
-![5, 10, 15, 20, 30, and 40 steps](../examples/steps-comparison.jpg)
+![Sampling step comparison](../examples/steps-comparison.jpg)
 
-The grid shows the visible progression across the displayed step values. The author currently prefers 30 steps. This is a personal preference, not a quantitative or mathematical optimum.
+The grid intentionally varies only the step setting according to the author's test design. Outputs develop different fine details and occasionally shift local features as steps increase. The Showcase reference uses 20 steps; **30 steps remains the author's preferred working setting** for this style. This preference does not establish an optimum.
 
-### ADetailer
+## Face refinement (ADetailer)
 
-![ADetailer detector disabled and enabled](../examples/adetailer-comparison.jpg)
+![ADetailer configuration example](../examples/adetailer-comparison.jpg)
 
-This supplied grid labels the left panel as detector `None` and the right panel with `99coins_anime_girl_face_m_seg.pt`. It is a useful example of the enabled/disabled configuration; further matched comparisons with complete settings are still planned.
+The existing example labels the left output with detector `None` and the right output with `99coins_anime_girl_face_m_seg.pt`. It illustrates the use of targeted face refinement. A more complete comparison with recorded detector, mask, denoising, inpainting, and prompt settings remains planned.
 
-## Planned comparisons
+## Planned additions
 
-- **ADetailer OFF vs ON:** record detector, confidence, mask, denoising, inpainting, and prompt settings; use matched source conditions.
-- **Optional Hires.fix:** document the actual refinement method, scale, upscaler, denoising, and output dimensions; compare the same source image.
-- **Additional Style Showcase Images:** add representative outputs from the same personal style workflow.
+- A further matched ADetailer OFF/ON comparison with complete settings
+- Optional high-resolution refinement before/after, using the same source image
+- Additional Signature Style Showcase examples
 
-## Notes for future comparisons
+## Method notes
 
-Label the changed setting clearly, preserve source images and their metadata where appropriate, and describe what is visible in the actual images. A shared seed does not guarantee identical composition across different sampler trajectories. Avoid claims of universal superiority or numerical improvement unless future evidence supports them.
+Only draw conclusions from visible examples and accurately recorded parameters. When testing a single variable, keep all other adjustable settings as consistent as possible. The same random seed does not force two sampling algorithms to produce the same pose or composition. Avoid inventing quantitative improvements.
