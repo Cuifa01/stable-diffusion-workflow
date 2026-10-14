@@ -32,6 +32,14 @@ These values are based on the author's confirmation and earlier repository docum
 
 The grid intentionally varies only the step setting according to the author's test design. Outputs develop different fine details and occasionally shift local features as steps increase. The Showcase reference uses 20 steps; **30 steps remains the author's preferred working setting** for this style. This preference does not establish an optimum.
 
+## CFG: 1.0 / 2.0 / 3.0 / 3.5 / 4.0 / 4.5 / 5.0 / 6.0
+
+*Image pending: `../examples/cfg-comparison.jpg`.*
+
+The author's new CFG grid uses the same Showcase1 reference setup, with **CFG scale as the varied parameter**. In the samples **below 3.5**, the illustration looks somewhat washed out or gray and has less of the desired detail. From **3.5 upward**, the outlines and colors become clearer. Higher CFG levels emphasize the outlines further; the author prefers **3.5** as a balanced starting point, while also finding the higher tested settings usable.
+
+This is a visual preference for the documented style, not a general rule about CFG scales.
+
 ## Face refinement (ADetailer)
 
 ![ADetailer configuration example](../examples/adetailer-comparison.jpg)
