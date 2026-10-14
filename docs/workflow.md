@@ -36,7 +36,7 @@ These are personal workflow observations, not controlled or general claims about
 
 ## Sampler and scheduler
 
-The preferred sampler is **Kohaku LoNyu Yog**, available through [Koishi-Star/Euler-Smea-Dyn-Sampler](https://github.com/Koishi-Star/Euler-Smea-Dyn-Sampler). The author's preference for **Karras** is based on practical visual judgment. The current sampler grid varies in pose, composition, and details, so it cannot establish a universal sampler advantage. A matched Normal vs Karras comparison is still planned.
+The preferred sampler is **Kohaku LoNyu Yog**, available through [Koishi-Star/Euler-Smea-Dyn-Sampler](https://github.com/Koishi-Star/Euler-Smea-Dyn-Sampler). The author's preference for **Karras** is based on practical visual judgment. The current sampler grid varies in pose, composition, and details, so it cannot establish a universal sampler advantage. The [Normal / Uniform / Karras grid](../examples/scheduler-comparison.jpg) varies schedule type according to its embedded X/Y/Z metadata. It documents that preference visually; pose and detail changes limit fine-grained visual attribution and broader claims.
 
 The recorded 30-step baseline is a personal setting. It is not presented as a mathematical optimum or as the upstream extension's recommendation.
 

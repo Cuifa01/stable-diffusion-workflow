@@ -45,6 +45,14 @@ The grid compares **Euler**, **Euler a**, and **Kohaku LoNyu Yog**. The images a
 
 Kohaku LoNyu Yog is provided by [Koishi-Star/Euler-Smea-Dyn-Sampler](https://github.com/Koishi-Star/Euler-Smea-Dyn-Sampler).
 
+### Scheduler Comparison
+
+<p align="center">
+  <img src="examples/scheduler-comparison.jpg" alt="Normal, Uniform, and Karras scheduler comparison" width="100%">
+</p>
+
+The grid compares **Normal**, **Uniform**, and **Karras** from left to right. Its embedded X/Y/Z metadata lists schedule type as the varied axis with Kohaku LoNyu Yog, 20 steps, CFG 3.5, seed `2601892452`, and `waiNSFWIllustrious_v150`. Normal and Uniform show similar poses, while Karras changes the hand gesture and small background details. **Karras remains my preference** for the overall look in this example. One grid does not establish a general ranking, and composition changes make specific line-quality differences difficult to attribute.
+
 ## 6. Sampling Steps Comparison
 
 <p align="center">
@@ -79,7 +87,6 @@ The source image for this baseline is `00036-1872344064.png` (832 × 1152; seed 
 
 The following additions remain **Planned / TODO**. No results are implied by these placeholders.
 
-- **Normal vs Karras:** matched comparison with the same sampler and other settings.
 - **ADetailer OFF vs ON:** a further matched comparison with documented settings; the current example is shown in [`examples/adetailer-comparison.jpg`](examples/adetailer-comparison.jpg).
 - **Optional Hires.fix Comparison:** identify the refinement method and compare the same source image.
 - **Additional Style Showcase Images:** add more representative examples.
