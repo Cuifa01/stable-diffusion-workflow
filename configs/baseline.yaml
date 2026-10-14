@@ -1,31 +1,34 @@
-# Recorded workflow configuration (documentation only; not a loadable preset).
-# Verified from source PNG metadata: 00036-1872344064.png (not redistributed).
-# The representative Showcase image is a separate generation with different metadata.
+# Common reference configuration for Showcase1 and the published visual comparisons.
+# Source: author's confirmation plus previously documented Showcase settings.
+# The exported Showcase PNG supplied for this revision has no readable generation metadata.
+# This is documentation, not a directly loadable NeoForge preset.
 
 interface: "Stable Diffusion WebUI NeoForge"
-interface_version: "neo-2.26"
-checkpoint: "reedXXXIllustrious_v160"
-checkpoint_hash_prefix: "dd984164e4"
-vae_module: "sdxl_vae"
+interface_version: null # TODO: verify actual version used for this comparison set
+reference_image: "../examples/representative-result.png"
+checkpoint: "waiNSFWIllustrious_v150"
+checkpoint_hash_prefix: "befc694a29" # previously documented; not verified in re-uploaded PNG
+vae_module: null # TODO: confirm
 sampler: "Kohaku LoNyu Yog"
 sampler_extension: "https://github.com/Koishi-Star/Euler-Smea-Dyn-Sampler"
-sampler_extension_version: null # TODO: record installed extension version/commit
+sampler_extension_version: null # TODO: record installed commit/version
 scheduler: "Karras"
-steps: 30
+reference_steps: 20 # Showcase and sampler grid
+preferred_steps: 30 # author's preference; sampling-step grid varies this parameter
 cfg_scale: 3.5
-seed: 1872344064
-width: 832
-height: 1152
-rng: "GPU"
+seed: 2601892452
+base_width: null # TODO: confirm, not infer from exported image dimensions
+base_height: null # TODO: confirm
+exported_showcase_width: 1479
+exported_showcase_height: 2048
 style_lora:
   name: "nyalia"
   weight: 0.6
 signature_style_file: "../style/signature-style.txt"
 
-# Baseline PNG does not establish ADetailer/Hires settings.
+# Refinements are optional for the workflow and may differ by exported example.
 adetailer:
-  baseline_status: "not recorded in baseline source PNG"
-  comparison: "Planned / TODO: matched OFF vs ON settings"
+  settings: "TODO: record face detector, denoising and mask parameters for matched test"
 hires_refinement:
-  baseline_status: "not recorded in baseline source PNG"
-  comparison: "Planned / TODO: identify method and compare same source image"
+  required_for_style: false
+  method: "TODO: verify the exact refinement pipeline for published example"
