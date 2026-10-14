@@ -63,7 +63,15 @@ This grid varies the number of steps (**5, 10, 15, 20, 30, and 40**) while retai
 
 Although the Showcase reference was generated with **20 steps**, I currently prefer **30 steps** when working with this style. That is a personal quality-versus-effort choice, not a universal or mathematically optimal setting.
 
-## 7. Workflow Configuration
+## 7. CFG Scale Comparison
+
+The comparison varies CFG scale across **1.0, 2.0, 3.0, 3.5, 4.0, 4.5, 5.0, and 6.0**.
+
+**Below 3.5**, the image tends to look grayer and loses some of the detail that defines my preferred style. At **3.5 and above**, the colors and outlines become clearer, with higher CFG values producing more pronounced linework. **3.5 is my personal preference** for a balanced result, although higher values also work well for this style.
+
+*Comparison image pending upload: `examples/cfg-comparison.jpg` (original author-supplied X/Y/Z grid).*
+
+## 8. Workflow Configuration
 
 The Showcase and comparison grids use the **same author-confirmed reference setup**, except for the parameter deliberately varied in each comparison.
 
@@ -74,7 +82,7 @@ The Showcase and comparison grids use the **same author-confirmed reference setu
 | Sampler | Kohaku LoNyu Yog | Varied only in the sampler comparison |
 | Scheduler | Karras | Fixed preference; no scheduler comparison included |
 | Steps | 20 | Showcase and sampler-grid reference; deliberately varied in the step grid |
-| CFG scale | 3.5 | Fixed reference value |
+| CFG scale | 3.5 | Preferred baseline; varied from 1.0 to 6.0 in the new CFG comparison |
 | Seed | `2601892452` | Same seed across the test images, as confirmed by the author |
 | Signature Style LoRA | `nyalia`, weight 0.6 | Part of the fixed style preset |
 | VAE / initial resolution | To be confirmed | Do not infer these from the exported image size |
@@ -87,14 +95,14 @@ My current NeoForge settings use a **832 × 1152** base canvas, **CFG 3.5**, and
 
 These are **current usage preferences**, not verified parameters for every published test image. See [`configs/personal-preferences.md`](configs/personal-preferences.md) for the full settings and their scope.
 
-## 8. Practical Experience & Limitations
+## 9. Practical Experience & Limitations
 
 - **Face refinement:** The base model's default facial details do not always meet my expectations. I use **ADetailer** when targeted refinement improves the expression and eye details without losing the intended style.
 - **Backgrounds:** Detailed scenes have been less reliable in my own use. I therefore prefer simple color fields and limited decorative elements that keep the character as the focal point.
 - **High-resolution processing:** Upscaling or a high-resolution pass can help with selected details, but it is **optional**. Higher pixel count alone is not the goal of this style.
 - **Style priority:** The Signature Style Preset defines the desired look; sampling and refinement are practical choices made in service of that visual result.
 
-## 9. Additional and Planned Comparisons
+## 10. Additional and Planned Comparisons
 
 An initial [ADetailer example](examples/adetailer-comparison.jpg) is available, but a fully documented matched comparison is still planned. Future additions may include:
 
@@ -104,7 +112,7 @@ An initial [ADetailer example](examples/adetailer-comparison.jpg) is available, 
 
 See [`docs/comparisons.md`](docs/comparisons.md). No results are claimed for comparisons that have not been completed.
 
-## 10. Reproduction Guide
+## 11. Reproduction Guide
 
 1. Install a compatible version of Stable Diffusion WebUI NeoForge.
 2. Obtain `waiNSFWIllustrious_v150`, a compatible VAE, and the `nyalia` LoRA from their original sources. No model weights are redistributed here.
