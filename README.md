@@ -62,7 +62,7 @@ Lower step counts look less resolved in parts of the image. **30 steps** is my c
 
 Below **3.5**, the image appears grayer and loses some characteristic detail. Higher CFG values strengthen the outlines; **3.5** is my preferred balance, although higher values can also work.
 
-*CFG grid image is not yet in the repository; the intended path is `examples/comparisons/cfg-comparison.jpg`.*
+![Myon_style CFG scale comparison: 1.0, 2.0, 3.0, 3.5, 4.0, 4.5, 5.0, and 6.0](examples/comparisons/cfg-comparison.jpg)
 
 ### ADetailer — Existing Initial Comparison
 

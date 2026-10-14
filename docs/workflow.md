@@ -86,7 +86,7 @@ After generation, I visually inspect facial expressions, local anatomy, linework
 | **CFG**: 1.0 through 6.0 | Values below 3.5 can look grayer and less detailed; higher values emphasize outlines. My preference is 3.5 |
 | **ADetailer** | An initial comparison image exists; full matched test parameters remain to be recorded |
 
-See [`comparisons.md`](comparisons.md) for the existing grids and descriptive observations. The **CFG image has not yet been uploaded** to the repository, so the comparison remains text-only here.
+See [`comparisons.md`](comparisons.md) for the existing grids and descriptive observations, including the [CFG comparison image](../examples/comparisons/cfg-comparison.jpg).
 
 These are personal visual studies, **not statistical benchmarks**. Where possible, I keep other settings fixed when varying one parameter. Matched seeds alone do not guarantee matching composition across different samplers.
 

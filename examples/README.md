@@ -15,7 +15,7 @@ Images are arranged by their role in the **Myon_style / NeoForge SDXL** workflow
 | [`comparisons/sampler-comparison.jpg`](comparisons/sampler-comparison.jpg) | Euler / Euler a / Kohaku LoNyu Yog |
 | [`comparisons/steps-comparison.jpg`](comparisons/steps-comparison.jpg) | 5 / 10 / 15 / 20 / 30 / 40 sampling steps |
 | [`comparisons/adetailer-comparison.jpg`](comparisons/adetailer-comparison.jpg) | Existing initial ADetailer comparison; full matched OFF/ON parameters are not yet documented |
-| `comparisons/cfg-comparison.jpg` | **Pending upload** — CFG 1.0 / 2.0 / 3.0 / 3.5 / 4.0 / 4.5 / 5.0 / 6.0 |
+| [`comparisons/cfg-comparison.jpg`](comparisons/cfg-comparison.jpg) | CFG 1.0 / 2.0 / 3.0 / 3.5 / 4.0 / 4.5 / 5.0 / 6.0 — compressed JPEG, **uploaded** |
 
 ## Historical Archive
 

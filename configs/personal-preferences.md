@@ -23,7 +23,7 @@ This file records **current personal settings** for the **Myon_style** visual st
 
 I compared **1.0 / 2.0 / 3.0 / 3.5 / 4.0 / 4.5 / 5.0 / 6.0** using the Showcase-style setup. Values below **3.5** appeared grayer and less detailed, while values from **3.5 upward** showed clearer lines; increasing CFG further emphasized the outlines. **3.5** is my preferred balance, although higher values were also usable in this style.
 
-The CFG comparison grid is awaiting repository upload as `../examples/comparisons/cfg-comparison.jpg`. These are qualitative personal observations, not a general optimum or a numerical quality claim.
+The [CFG comparison grid](../examples/comparisons/cfg-comparison.jpg) is available in the repository. These are qualitative personal observations, not a general optimum or a numerical quality claim.
 
 ## Optional High-Resolution Refinement (Hires.fix)
 

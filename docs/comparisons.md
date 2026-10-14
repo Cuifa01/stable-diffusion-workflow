@@ -38,7 +38,7 @@ Lower-step results are less resolved in parts of the illustration. Higher step c
 
 ## 3. CFG — 1.0 / 2.0 / 3.0 / 3.5 / 4.0 / 4.5 / 5.0 / 6.0
 
-*The CFG comparison image is not yet in the GitHub repository. Planned location: `../examples/comparisons/cfg-comparison.jpg`.*
+![CFG scale comparison from 1.0 through 6.0](../examples/comparisons/cfg-comparison.jpg)
 
 In this comparison, CFG values **below 3.5** appear grayer and lose some of the preferred style's detail. At **3.5 and above**, colors and contours become clearer, while increasing CFG further strengthens the outlines. The author prefers **CFG 3.5** as a balance; higher tested values can also work.
 
@@ -57,7 +57,6 @@ The repository **already contains** this initial comparison. The image is labele
 - Matched ADetailer OFF/ON test with a complete settings record
 - Optional Hires.fix before/after comparison using a common source
 - Additional Myon_style Showcase outputs
-- Upload of the existing CFG grid to the documented image location
 
 ## Method Notes
 
