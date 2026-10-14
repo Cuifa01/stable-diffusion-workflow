@@ -10,6 +10,12 @@ The artist-tag mix and `nyalia` style LoRA form one fixed Signature Style Preset
 
 LoRA source: [nyalia (Illustrious)](https://civitai.com/models/834822/nyalia-illustrious), used at weight `0.6`.
 
+## Prompt Organization
+
+My positive prompts begin with quality tags and then use `BREAK` to separate six parts: **camera/composition, pose/action, character/expression, body/outfit, fixed style preset, and background**. The fixed style tags and LoRA remain one block, while the other sections change between illustrations.
+
+The full reusable layout and verbatim example positive/negative prompts are in [`prompt-structure.md`](prompt-structure.md). This documentation records the author's prompt convention; it does not attribute the final style to individual tags.
+
 ## Reference configuration for the published comparisons
 
 The author confirms that the comparisons are based on the same Showcase1 style, checkpoint, seed, and other settings **except the compared parameter**.
