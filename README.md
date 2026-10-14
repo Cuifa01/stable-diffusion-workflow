@@ -27,6 +27,8 @@ artist:tianliang duohe fangdongye,
 
 Reusable preset: [`style/signature-style.txt`](style/signature-style.txt).
 
+Style LoRA: [nyalia (Illustrious)](https://civitai.com/models/834822/nyalia-illustrious), weight `0.6`.
+
 ## 4. Style Showcase
 
 <p align="center">
@@ -41,15 +43,9 @@ This illustration serves as the **visual reference** for the comparisons below. 
   <img src="examples/sampler-comparison.jpg" alt="Visual comparison of Euler, Euler a, and Kohaku LoNyu Yog" width="100%">
 </p>
 
-Using the same reference style and generation setup, I compared **Euler**, **Euler a**, and **Kohaku LoNyu Yog**. Each produces a recognizable version of the character, but I noticed several differences that matter for my preferred style:
+**Euler** produces unusual color patches around the hair edges, and the layering between elements is less clear. **Euler a** has messier highlights and shadows in the hair. Both also show some character-structure issues. In this comparison, **Kohaku LoNyu Yog** gives the cleanest overall result, with more coherent structure and lighting, making it my preferred sampler for this style.
 
-- **Euler:** Small, unexpected color patches appear around parts of the hair edges, interrupting the otherwise clean silhouette.
-- **Euler a:** The highlights and shadow shapes in the hair feel more scattered and visually busy, making the shading less cohesive.
-- **Kohaku LoNyu Yog:** The hair edges and shading look more coherent in this example, with fewer noticeable color artifacts and no major lighting irregularities that distract from the intended appearance.
-
-For these reasons, **Kohaku LoNyu Yog is my preferred sampler for this signature style**. The preference is based on visual judgment in my own workflow—not a claim that this sampler consistently outperforms the alternatives on other models or prompts. Sampler changes can also alter pose and composition even when the seed and other settings are kept the same.
-
-The sampler is available from [Koishi-Star/Euler-Smea-Dyn-Sampler](https://github.com/Koishi-Star/Euler-Smea-Dyn-Sampler). **Karras** is kept as the selected scheduler for this workflow, but no scheduler ranking is presented here.
+Sampler source: [Koishi-Star/Euler-Smea-Dyn-Sampler](https://github.com/Koishi-Star/Euler-Smea-Dyn-Sampler).
 
 ## 6. Sampling Steps Comparison
 
