@@ -43,6 +43,16 @@ The preferred sampler is **Kohaku LoNyu Yog** from [Koishi-Star/Euler-Smea-Dyn-S
 
 **20 steps** is the reference used for the Showcase image and sampler comparison, whereas **30 steps** is the author's current practical preference shown in the step grid. A higher step count can change local details or even the image composition, not just add sharpness. CFG is fixed at **3.5** in the documented comparisons. Neither value should be described as mathematically optimal.
 
+## Current personal generation settings
+
+My current NeoForge UI screenshots show a **832 × 1152** base canvas, **CFG 3.5**, **Batch Count 1**, and **Batch Size 1**.
+
+For **optional Hires.fix**, I have configured a **4xNMKDSuperscale** upscaler (visible name prefix), **12 Hires steps**, **0.2 denoising strength**, **2× scaling**, and **Hires CFG 3**. The resize target width and height fields are both set to **0**. Because the upscaler entry is truncated in the screenshot, the exact full installed upscaler name is not independently verified.
+
+These are **personal settings visible in the NeoForge UI**, not necessarily the settings behind the published Showcase. They should not be conflated with the reference grid's **20 base sampling steps**, or the separately stated **30-step preference**.
+
+A detailed record is available in [`../configs/personal-preferences.md`](../configs/personal-preferences.md).
+
 ## Refinement and limitations
 
 - **ADetailer:** Often useful when the base model's facial details fall short of the intended style. Record detector, denoise, mask and inpainting settings when adding complete before/after demonstrations.
