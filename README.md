@@ -1,132 +1,110 @@
 # Stable Diffusion Anime Style Lab
 
-*A personal style-focused image generation project using Stable Diffusion WebUI NeoForge.*
+**Myon_style · NeoForge SDXL Image Generation Workflow**
 
-This repository brings together my **signature anime style preset**, structured prompts, sampler and parameter comparisons, image-refinement notes, and ongoing experiments. It is an evolving record of how I develop and reproduce a consistent visual style, with **personal style LoRA training currently in progress**.
+A personal anime-style image generation project built around **Stable Diffusion WebUI NeoForge** and the **WAI-illustrious-SDX / Illustrious SDXL** model family. The focus is a structured, style-oriented generation workflow, supported by practical parameter comparisons and optional image refinement.
 
-## 1. Project Overview
+> **Scope:** This repository documents a personal workflow and visual experiments. It does not claim a new diffusion algorithm or a completed, self-trained model.
 
-The lab focuses on **cute, character-centered anime illustrations** with soft cel shading, clean line art, and minimal graphic backgrounds. It documents practical configuration choices and visual observations, not the development of a new diffusion algorithm or a completed custom model.
+## 1. Myon_style — Visual Goal
 
-## 2. Style Overview
+**Myon_style** is the name I use for my preferred visual style: **cute anime portraits, soft cel shading, clean line art, expressive faces, and minimal graphic backgrounds**. I prioritize the character's face, silhouette, and cohesive shading over complex scenery.
 
-**Cute Anime Portrait / Soft Cel Shading / Clean Line Art / Minimal Graphic Background**
+<p align="center">
+  <img src="examples/representative-result.png" alt="Myon_style representative anime illustration" width="520">
+</p>
 
-My workflow favors expressive characters, readable outlines, restrained shading, and simple graphic backgrounds. Rather than increasing detail everywhere, I focus on the face, silhouette, and overall balance of the illustration.
+The current visual result uses a **Signature Style Preset** consisting of artist-style tags and the existing [nyalia (Illustrious) LoRA](https://civitai.com/models/834822/nyalia-illustrious) at weight `0.6`. The exact preset is in [`style/signature-style.txt`](style/signature-style.txt).
 
-## 3. Signature Style Preset
+**Naming distinction:** `Myon_style` names my visual style. A separate personal **Myon_style LoRA** is currently being trained and is **not** the LoRA used to produce the published examples.
 
-The visual identity comes primarily from a fixed combination of artist-style tags and a style LoRA. I treat the complete combination as **one Signature Style Preset**, without attempting to isolate the influence of individual tags at this stage.
+## 2. NeoForge SDXL Workflow
+
+The workflow follows six stages:
 
 ```text
-artist:tianliang duohe fangdongye,
-(kanpa \(campagne 9\):0.8),
-(alpha \(alpha91\):0.6),
-(koyama shigeru:0.6),
-(massakasama:0.55),
-<lora:nyalia:0.6>
+1. Model Setup           Checkpoint + built-in/default VAE + extensions
+          ↓
+2. Prompt Construction   Quality tags + six-part prompt + Signature Style Preset
+          ↓
+3. Sampling Setup        Kohaku LoNyu Yog + Karras + Steps + CFG
+          ↓
+4. Base Generation       Portrait resolution + seed + txt2img
+          ↓
+5. Optional Refinement   ADetailer / Hires.fix (as needed)
+          ↓
+6. Visual Evaluation     Structure + linework + shading + style consistency
 ```
 
-Reusable preset: [`style/signature-style.txt`](style/signature-style.txt).
+For the detailed sequence, choices, and caveats, see [`docs/workflow.md`](docs/workflow.md). For the positive/negative prompt examples and six-part layout, see [`docs/prompt-structure.md`](docs/prompt-structure.md).
 
-Style LoRA: [nyalia (Illustrious)](https://civitai.com/models/834822/nyalia-illustrious), weight `0.6`.
+## 3. Current Personal Configuration
 
-### Prompt Organization
+| Setting | My current workflow |
+| --- | --- |
+| Interface | **Stable Diffusion WebUI NeoForge** |
+| Checkpoint family | **WAI-illustrious-SDX / WAI-Illustrious (SDXL-based)** |
+| Model compatibility | In my own workflow, **WAI-Illustrious versions above 15.0** can be used; image results may vary by version |
+| VAE | Using the VAE configuration provided by the checkpoint/default setup; no separate VAE selection is required in my current workflow |
+| Base portrait resolution | **896 × 1152** (latest confirmed default) |
+| Sampler / Scheduler | **Kohaku LoNyu Yog / Karras** |
+| Sampling steps | **30 preferred** for everyday use; **20** recorded for the Showcase reference |
+| CFG scale | **3.5 preferred** |
+| Prompt style | Six functional blocks separated with `BREAK` |
+| Existing style LoRA | **nyalia**, weight `0.6` (not the in-training Myon_style LoRA) |
+| ADetailer / Hires.fix | Optional refinement stages |
 
-I use a consistent six-part positive-prompt layout, separated by `BREAK`: **camera & composition → pose & action → character & expression → body & outfit → fixed style preset → background**. This keeps the reusable style configuration separate from each illustration's subject and scene.
+For optional Hires.fix, my documented UI settings include **2× upscale**, **12 Hires steps**, **0.2 denoising**, and **Hires CFG 3**. They are preferences, not requirements for the Myon_style look.
 
-The complete template and the original **positive and negative prompt examples** are available in [`docs/prompt-structure.md`](docs/prompt-structure.md).
+**Reference vs current settings:** The previously published Showcase/test record names `waiNSFWIllustrious_v150`, **20 steps**, CFG **3.5**, and seed `2601892452`. That historical reference is preserved in [`configs/baseline.yaml`](configs/baseline.yaml). My latest confirmed **896 × 1152** base resolution supersedes an earlier **832 × 1152** personal-settings screenshot; the exported Showcase image has no readable generation metadata, so its original base dimensions cannot be independently recovered from that export.
 
-## 4. Style Showcase
+## 4. Visual Experiments
 
-<p align="center">
-  <img src="examples/representative-result.png" alt="Representative anime portrait in the signature style" width="520">
-</p>
+These are **personal visual comparisons**, not quantitative benchmarks. The published grids use the same author-confirmed reference setup except for the deliberately varied setting.
 
-This illustration serves as the **visual reference** for the comparisons below. As confirmed by the author and noted in earlier project records, the associated working setup uses **`waiNSFWIllustrious_v150`**, **Kohaku LoNyu Yog + Karras**, **20 steps**, **CFG 3.5**, **seed `2601892452`**, and **`nyalia` at 0.6**. The exported Showcase PNG supplied for this revision does not contain readable generation metadata, so these settings are recorded from the author's confirmation and the existing project notes rather than independently extracted from this export.
+### Sampler — Euler / Euler a / Kohaku LoNyu Yog
 
-## 5. Sampler Comparison
+![Sampler comparison](examples/sampler-comparison.jpg)
 
-<p align="center">
-  <img src="examples/sampler-comparison.jpg" alt="Visual comparison of Euler, Euler a, and Kohaku LoNyu Yog" width="100%">
-</p>
+Euler has color artifacts near hair edges and less distinct layering; Euler a produces less orderly hair shading. Both show some character-structure issues. **Kohaku LoNyu Yog** gives my preferred overall result in this example.
 
-**Euler** produces unusual color patches around the hair edges, and the layering between elements is less clear. **Euler a** has messier highlights and shadows in the hair. Both also show some character-structure issues. In this comparison, **Kohaku LoNyu Yog** gives the cleanest overall result, with more coherent structure and lighting, making it my preferred sampler for this style.
+Sampler implementation: [Koishi-Star/Euler-Smea-Dyn-Sampler](https://github.com/Koishi-Star/Euler-Smea-Dyn-Sampler).
 
-Sampler source: [Koishi-Star/Euler-Smea-Dyn-Sampler](https://github.com/Koishi-Star/Euler-Smea-Dyn-Sampler).
+### Sampling Steps — 5 / 10 / 15 / 20 / 30 / 40
 
-## 6. Sampling Steps Comparison
+![Sampling steps comparison](examples/steps-comparison.jpg)
 
-<p align="center">
-  <img src="examples/steps-comparison.jpg" alt="Comparison of 5, 10, 15, 20, 30, and 40 sampling steps" width="100%">
-</p>
+Lower step counts look less resolved in parts of the image. **30 steps** is my current preference, while the Showcase reference used **20 steps**.
 
-This grid varies the number of steps (**5, 10, 15, 20, 30, and 40**) while retaining the Showcase reference configuration for the other recorded settings. The lower-step samples look somewhat less resolved in places, while the higher-step outputs develop different small details and facial features. The change is not simply a linear increase in quality: composition and local features can shift as the step count changes.
+### CFG Scale — 1.0 to 6.0
 
-Although the Showcase reference was generated with **20 steps**, I currently prefer **30 steps** when working with this style. That is a personal quality-versus-effort choice, not a universal or mathematically optimal setting.
+Below **3.5**, the image appears grayer and loses some characteristic detail. Higher CFG values strengthen the outlines; **3.5** is my preferred balance, although higher values can also work.
 
-## 7. CFG Scale Comparison
+*CFG grid image is not yet in the repository; the intended path is `examples/cfg-comparison.jpg`.*
 
-The comparison varies CFG scale across **1.0, 2.0, 3.0, 3.5, 4.0, 4.5, 5.0, and 6.0**.
+### ADetailer — Existing Initial Comparison
 
-**Below 3.5**, the image tends to look grayer and loses some of the detail that defines my preferred style. At **3.5 and above**, the colors and outlines become clearer, with higher CFG values producing more pronounced linework. **3.5 is my personal preference** for a balanced result, although higher values also work well for this style.
+![Existing ADetailer comparison](examples/adetailer-comparison.jpg)
 
-*Comparison image pending upload: `examples/cfg-comparison.jpg` (original author-supplied X/Y/Z grid).*
+An initial example is **already included**. It compares images labeled with detector `None` and `99coins_anime_girl_face_m_seg.pt`. Full detector, mask, and inpainting settings for a rigorously documented matched OFF/ON test are not yet recorded. ADetailer is an optional part of the workflow.
 
-## 8. Workflow Configuration
+Further notes: [`docs/comparisons.md`](docs/comparisons.md).
 
-The Showcase and comparison grids use the **same author-confirmed reference setup**, except for the parameter deliberately varied in each comparison.
+## 5. Documentation
 
-| Parameter | Reference setup | Notes |
-| --- | --- | --- |
-| Interface | Stable Diffusion WebUI NeoForge | Exact installed version should be recorded for future reproduction |
-| Checkpoint | `waiNSFWIllustrious_v150` | Previously documented for the Showcase; differs from the older `reedXXXIllustrious_v160` example |
-| Sampler | Kohaku LoNyu Yog | Varied only in the sampler comparison |
-| Scheduler | Karras | Fixed preference; no scheduler comparison included |
-| Steps | 20 | Showcase and sampler-grid reference; deliberately varied in the step grid |
-| CFG scale | 3.5 | Preferred baseline; varied from 1.0 to 6.0 in the new CFG comparison |
-| Seed | `2601892452` | Same seed across the test images, as confirmed by the author |
-| Signature Style LoRA | `nyalia`, weight 0.6 | Part of the fixed style preset |
-| VAE / initial resolution | To be confirmed | Do not infer these from the exported image size |
+| File | Purpose |
+| --- | --- |
+| [`docs/workflow.md`](docs/workflow.md) | Full NeoForge SDXL generation sequence and configuration distinctions |
+| [`docs/prompt-structure.md`](docs/prompt-structure.md) | Six-part prompt layout and original positive/negative examples |
+| [`docs/comparisons.md`](docs/comparisons.md) | Detailed sampler, step, CFG, and ADetailer observations |
+| [`style/signature-style.txt`](style/signature-style.txt) | Reusable current style preset (artist tags + nyalia) |
+| [`configs/baseline.yaml`](configs/baseline.yaml) | Historical Showcase/comparison reference |
+| [`configs/personal-preferences.md`](configs/personal-preferences.md) | Earlier recorded personal UI settings; see latest 896 × 1152 update above |
 
-**Reproduction note:** This table describes the author's confirmed common test setup, not independently verified metadata for every exported image. The re-uploaded Showcase PNG has no readable parameter block. See [`configs/baseline.yaml`](configs/baseline.yaml) and [`docs/workflow.md`](docs/workflow.md).
+## 6. Project History & Ongoing Experiments
 
-### Current Personal Settings
+I began putting this personal workflow into practice in **July 2025** and only **recently organized and uploaded** the material to GitHub.
 
-My current NeoForge settings use a **832 × 1152** base canvas, **CFG 3.5**, and **Batch Count / Batch Size = 1 / 1**. When I choose to enable optional **Hires.fix**, the configured values shown in my UI are **2× upscaling**, **12 Hires steps**, **0.2 denoising strength**, **Hires CFG 3**, and a **4xNMKDSuperscale** upscaler (full displayed selection name to be confirmed).
+My personal **Myon_style LoRA** is **in training**. It belongs to the project's future **Experiments** workstream; no trained weights, performance results, or completed model are claimed here.
 
-These are **current usage preferences**, not verified parameters for every published test image. See [`configs/personal-preferences.md`](configs/personal-preferences.md) for the full settings and their scope.
-
-## 9. Practical Experience & Limitations
-
-- **Face refinement:** The base model's default facial details do not always meet my expectations. I use **ADetailer** when targeted refinement improves the expression and eye details without losing the intended style.
-- **Backgrounds:** Detailed scenes have been less reliable in my own use. I therefore prefer simple color fields and limited decorative elements that keep the character as the focal point.
-- **High-resolution processing:** Upscaling or a high-resolution pass can help with selected details, but it is **optional**. Higher pixel count alone is not the goal of this style.
-- **Style priority:** The Signature Style Preset defines the desired look; sampling and refinement are practical choices made in service of that visual result.
-
-## 10. Additional and Planned Comparisons
-
-An initial [ADetailer example](examples/adetailer-comparison.jpg) is available, but a fully documented matched comparison is still planned. Future additions may include:
-
-- ADetailer **OFF vs ON**, with complete face-refinement settings
-- Optional high-resolution refinement **before vs after**
-- Additional examples using the same Signature Style Preset
-
-See [`docs/comparisons.md`](docs/comparisons.md). No results are claimed for comparisons that have not been completed.
-
-## 11. Reproduction Guide
-
-1. Install a compatible version of Stable Diffusion WebUI NeoForge.
-2. Obtain `waiNSFWIllustrious_v150`, a compatible VAE, and the `nyalia` LoRA from their original sources. No model weights are redistributed here.
-3. Install the [Euler-Smea-Dyn-Sampler extension](https://github.com/Koishi-Star/Euler-Smea-Dyn-Sampler) and select **Kohaku LoNyu Yog**.
-4. Apply the full Signature Style Preset from [`style/signature-style.txt`](style/signature-style.txt).
-5. Start from **Karras**, **20 steps**, **CFG 3.5**, and **seed `2601892452`** to follow the documented Showcase reference. **30 steps** is an alternative personal preference illustrated by the step comparison.
-6. Apply ADetailer only when desired, and record any high-resolution refinement separately. Exact face-refinement, upscale, base-size, and extension-version details still need to be documented.
-
-Different extensions, software versions, or hardware configurations may produce different results even when these recorded settings match.
-
-## 12. Project History & Current Status
-
-This personal Stable Diffusion workflow was first put into practice in **July 2025**. The workflow and its examples were only **recently organized and uploaded to GitHub**, so the repository's publication date does not reflect when the project began.
-
-I am currently **training a personal style LoRA** related to this workflow. This is ongoing work and is not presented here as a completed or released model.
+The current priority is documenting a clear **NeoForge + SDXL workflow**, with honest separation between the established generation setup, existing visual comparisons, and experiments still in progress.
