@@ -5,6 +5,7 @@
 | `representative-result.png` | Signature Style Showcase / reference illustration |
 | `sampler-comparison.jpg` | Euler / Euler a / Kohaku LoNyu Yog |
 | `steps-comparison.jpg` | 5 / 10 / 15 / 20 / 30 / 40 steps |
+| `cfg-comparison.jpg` | CFG 1.0 / 2.0 / 3.0 / 3.5 / 4.0 / 4.5 / 5.0 / 6.0 — **pending binary upload** |
 | `adetailer-comparison.jpg` | Initial ADetailer example; expanded matched test planned |
 | `scheduler-comparison.jpg` | Previously uploaded image retained as an unused archive; not part of the current README comparison set |
 
