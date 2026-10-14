@@ -13,6 +13,12 @@ This file documents my **current working preferences** from NeoForge settings sc
 
 The preferred sampler is **Kohaku LoNyu Yog + Karras**. I generally favor **30 sampling steps** for this style, although the published Showcase reference and sampler comparison are documented at **20 steps**.
 
+### Why I prefer CFG 3.5
+
+I compared **1.0 / 2.0 / 3.0 / 3.5 / 4.0 / 4.5 / 5.0 / 6.0** with the same general Showcase1 setup. In my visual judgment, CFG levels below **3.5** look flatter, grayer, and less detailed. Starting at **3.5**, outlines become clearer, and higher CFG levels accentuate them further. I prefer **3.5** for a balanced style, but settings above it are also usable.
+
+Image slot: `../examples/cfg-comparison.jpg` (pending upload). This is a personal observation, not an independently measured optimum.
+
 ## Optional high-resolution refinement (Hires.fix)
 
 | Setting | Value shown in NeoForge |
