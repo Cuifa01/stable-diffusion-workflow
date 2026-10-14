@@ -29,6 +29,12 @@ Reusable preset: [`style/signature-style.txt`](style/signature-style.txt).
 
 Style LoRA: [nyalia (Illustrious)](https://civitai.com/models/834822/nyalia-illustrious), weight `0.6`.
 
+### Prompt Organization
+
+I use a consistent six-part positive-prompt layout, separated by `BREAK`: **camera & composition → pose & action → character & expression → body & outfit → fixed style preset → background**. This keeps the reusable style configuration separate from each illustration's subject and scene.
+
+The complete template and the original **positive and negative prompt examples** are available in [`docs/prompt-structure.md`](docs/prompt-structure.md).
+
 ## 4. Style Showcase
 
 <p align="center">
