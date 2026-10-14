@@ -43,6 +43,10 @@ The preferred sampler is **Kohaku LoNyu Yog** from [Koishi-Star/Euler-Smea-Dyn-S
 
 **20 steps** is the reference used for the Showcase image and sampler comparison, whereas **30 steps** is the author's current practical preference shown in the step grid. A higher step count can change local details or even the image composition, not just add sharpness. CFG is fixed at **3.5** in the documented comparisons. Neither value should be described as mathematically optimal.
 
+## CFG comparison: personal preference
+
+A new visual comparison covers **CFG 1.0, 2.0, 3.0, 3.5, 4.0, 4.5, 5.0, and 6.0**. In this example, values below 3.5 look grayer and less detailed; values from 3.5 onward give stronger color separation and outlines. I prefer **CFG 3.5** for its balanced appearance, although higher values can also suit this style. The image will be linked once uploaded as `examples/cfg-comparison.jpg`.
+
 ## Current personal generation settings
 
 My current NeoForge UI screenshots show a **832 × 1152** base canvas, **CFG 3.5**, **Batch Count 1**, and **Batch Size 1**.
