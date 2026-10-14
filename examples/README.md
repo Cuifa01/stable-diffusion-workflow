@@ -1,20 +1,17 @@
-# Example images — reserved slots
+# Example Images
 
-The author will provide the images later. The repository intentionally includes no invented comparison results.
+| File | Content | Format/source |
+| --- | --- | --- |
+| `representative-result.png` | Representative Youmu anime portrait and style showcase | PNG, original bytes preserved |
+| `sampler-comparison.jpg` | Euler / Euler a / Kohaku LoNyu Yog, three columns | JPEG, original bytes preserved |
+| `steps-comparison.jpg` | 5 / 10 / 15 / 20 / 30 / 40 steps, six columns | JPEG, original bytes preserved |
+| `adetailer-comparison.jpg` | ADetailer detector disabled vs `99coins_anime_girl_face_m_seg.pt` | JPEG, original bytes preserved |
 
-| Filename to upload | Pair |
-| --- | --- |
-| `01-sampler-comparison.png` | Euler (Karras) vs Kohaku LoNyu Yog (Karras) |
-| `02-scheduler-comparison.png` | Normal vs Karras, both Kohaku LoNyu Yog |
-| `03-adetailer-comparison.png` | ADetailer off vs on, same base image and face crop |
-| `04-hires-comparison.png` | Before vs after high-resolution refinement, same-image crops |
+The README distinguishes the Showcase image's embedded settings from the separate recorded 30-step baseline. No model or LoRA weights are included.
 
-**Optional later:** `05-cfg-comparison.png`, `06-steps-comparison.png`, and a small SFW portrait gallery.
+## Remaining planned images
 
-For every comparison, retain the **source PNG with generation metadata** where possible. Do not infer a refinement method from output resolution alone. If a final PNG lacks metadata, separately document the settings used.
-
-Once each comparison exists, replace its corresponding `[Image placeholder]` line in the root `README.md` with a Markdown image reference such as:
-
-```md
-![Euler vs Kohaku LoNyu Yog](examples/01-sampler-comparison.png)
-```
+- Normal vs Karras
+- A further matched ADetailer OFF vs ON comparison with complete settings
+- Optional Hires.fix before/after comparison
+- Additional style showcase images

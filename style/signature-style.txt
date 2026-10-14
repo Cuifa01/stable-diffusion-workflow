@@ -1,0 +1,6 @@
+artist:tianliang duohe fangdongye,
+(kanpa \(campagne 9\):0.8),
+(alpha \(alpha91\):0.6),
+(koyama shigeru:0.6),
+(massakasama:0.55),
+<lora:nyalia:0.6>

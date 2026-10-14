@@ -1,90 +1,52 @@
-# Workflow and configuration
+# Workflow Notes
 
-## 1. Visual objective
+## Purpose and visual scope
 
-**Cute Anime Portrait / Soft Cel Shading / Clean Line Art / Minimal Graphic Background.**
+This repository documents a personal Stable Diffusion WebUI NeoForge workflow for **Cute Anime Portrait / Soft Cel Shading / Clean Line Art / Minimal Graphic Background**. It focuses on portraits, character illustrations, and simple graphic backgrounds. The project does not claim new diffusion algorithms or emphasize large action poses or pose consistency.
 
-This project primarily documents a **single-character, stylized portrait workflow**. It does not require dynamic poses or complex scenes. Pose reference samples may be added later without being treated as a separate performance claim.
+## Signature Style Preset
 
-### Style block
+The fixed artist-tag and style-LoRA combination is treated as one preset. No individual-tag attribution or ablation is included in V0.1. The exact reusable text is in [`../style/signature-style.txt`](../style/signature-style.txt).
 
-The current artist-tag combination and style LoRA are handled as **one fixed style configuration**. We are **not** attributing individual visual effects to specific artist tags or conducting style-origin analysis. A future personal LoRA may replace or simplify this block.
+## Verified baseline metadata
 
-**Exact prompt / tag block:** [TODO — insert after reviewing what to publish publicly.]
-
-## 2. Known working baseline
-
-One source PNG (`00036-1872344064.png`) has the following embedded parameters:
+The source PNG `00036-1872344064.png` records the following settings. The PNG itself is not included in this repository.
 
 | Setting | Recorded value |
 | --- | --- |
-| Interface version | `neo-2.26` |
-| Checkpoint | `reedXXXIllustrious_v160` |
-| Model hash | `dd984164e4` |
-| Sampler | `Kohaku LoNyu Yog` |
-| Schedule type | `Karras` |
-| Steps | `30` |
-| CFG scale | `3.5` |
-| Seed | `1872344064` |
-| Base image size | `832 × 1152` |
-| VAE / module | `sdxl_vae` |
-| Style LoRA | `nyalia`, strength `0.6` |
-| RNG | `GPU` |
+| Interface | Stable Diffusion WebUI NeoForge, `neo-2.26` |
+| Checkpoint | `reedXXXIllustrious_v160`, hash prefix `dd984164e4` |
+| VAE module | `sdxl_vae` |
+| Sampler | Kohaku LoNyu Yog |
+| Scheduler | Karras |
+| Steps / CFG | 30 / 3.5 |
+| Seed / size | 1872344064 / 832 × 1152 |
+| Style LoRA | `nyalia`, 0.6 |
 
-This source PNG does not carry ADetailer or high-resolution-processing parameters. These settings must be documented separately from real test runs rather than inferred from the final image.
+The representative Showcase image is a separate output. Its metadata records `waiNSFWIllustrious_v150` (hash prefix `befc694a29`), 20 steps, CFG 3.5, Kohaku LoNyu Yog + Karras, `nyalia` 0.6, ADetailer, and a 2× Hires pass using `4xNMKDSuperscale` (20 Hires steps, CFG 3). Do not combine those Showcase-specific values with the recorded baseline.
 
-## 3. Sampler dependency
+## Practical observations and limits
 
-**External extension:** [Koishi-Star/Euler-Smea-Dyn-Sampler](https://github.com/Koishi-Star/Euler-Smea-Dyn-Sampler)
+- The author often applies ADetailer because the checkpoint's original face details may not meet the intended preference.
+- Complex backgrounds have been less reliable in the author's use, so the workflow favors simple backgrounds and character-centered composition.
+- High-resolution refinement may improve some details but is optional and does not define the style.
+- The signature style block is the central style configuration.
 
-**Preferred sampler:** Kohaku LoNyu Yog  
-**Preferred scheduler:** Karras
+These are personal workflow observations, not controlled or general claims about all checkpoints or prompts.
 
-Personal rationale to test: cleaner-looking line work, less blur, and less visual clutter for this style.
+## Sampler and scheduler
 
-**Important:** This is an *empirical preference*, not proof of a universally best sampler. The upstream author's 2024-08-31 note recommends **10 steps** for Kohaku LoNyu Yog and states it is a slower second-order method. The recorded **30 steps** should therefore be presented as a personal setting, not the developer's recommendation.
+The preferred sampler is **Kohaku LoNyu Yog**, available through [Koishi-Star/Euler-Smea-Dyn-Sampler](https://github.com/Koishi-Star/Euler-Smea-Dyn-Sampler). The author's preference for **Karras** is based on practical visual judgment. The current sampler grid varies in pose, composition, and details, so it cannot establish a universal sampler advantage. A matched Normal vs Karras comparison is still planned.
 
-**TODO for reproducibility:** record extension commit/version, precise installation steps, GPU, CUDA/PyTorch versions if known, and actual generation time.
+The recorded 30-step baseline is a personal setting. It is not presented as a mathematical optimum or as the upstream extension's recommendation.
 
-## 4. Why Karras?
+## Reproduction checklist
 
-The working configuration uses Karras. The `Normal` vs `Karras` comparison remains pending. Until it is generated, describe Karras as a personal preference only.
+1. Install a compatible NeoForge release and the sampler extension using upstream instructions.
+2. Obtain the checkpoint, VAE, and style LoRA from authorized original sources; this repository does not redistribute weights.
+3. Load the full Signature Style Preset from `style/signature-style.txt` as one positive-prompt block.
+4. For the recorded baseline, configure the verified checkpoint, Kohaku LoNyu Yog, Karras, 30 steps, CFG 3.5, and `nyalia` at 0.6.
+5. Apply ADetailer as needed for face refinement. Treat high-resolution refinement as optional.
+6. Record extension version and any downstream refinement settings when generating future comparisons.
 
-## 5. CFG scale and sampling steps
-
-**CFG = 3.5** controls the degree of conditioning guidance used in sampling.  
-**Steps = 30** controls the number of sampling iterations.
-
-Both are **recorded configuration values**. They should be included in the reproducibility table. Their effects can depend on checkpoint, sampler, scheduler, and prompt, so **no separate CFG/Steps ablation is required for v1**. Do not claim 3.5 or 30 is mathematically optimal.
-
-## 6. Face refinement (ADetailer)
-
-**Practical motivation:** The author prefers additional face refinement because default facial details are often insufficient for the intended style.
-
-**Comparison required:** same base result, with / without ADetailer; include one matching facial crop. This establishes the benefit over *no face refinement*, not superiority over untested alternatives.
-
-**TODO — record exact:** detector model, confidence, mask blur/dilate, denoising strength, inpainting size/padding, positive/negative inpainting prompt, extension version.
-
-## 7. High-resolution refinement
-
-**Practical motivation:** The author finds additional high-resolution processing useful for preserving small visual details.
-
-**Comparison required:** same source image before/after refinement; aligned crops of hair, eye or clothing regions.
-
-**TODO — verify method:** Hires.fix vs external upscale vs img2img; upscaler, scale factor, denoising strength, steps, and output dimensions. A larger file alone does not identify which process was used.
-
-## 8. Scene scope
-
-The author generally favors minimalist/graphic backgrounds rather than detailed scenes, which have caused visually inconsistent results in prior personal use. Treat this as a **workflow scope and reported observation**, not a general model-wide finding.
-
-## 9. Reproduction checklist
-
-1. Install a compatible NeoForge version.
-2. Install the referenced sampler extension and note its commit/version.
-3. Obtain the checkpoint, VAE and LoRA from their original authorized sources.
-4. Load the full positive/negative prompt and fixed style configuration.
-5. Set checkpoint, sampler, scheduler, steps, CFG, seed and image size.
-6. Recreate the base image, then apply the documented optional face/high-resolution steps.
-7. Compare the result visually; exact cross-device/pipeline pixel equivalence is not guaranteed.
-
-**Current status:** Full prompt and downstream refinement settings are awaiting the author's review before public release.
+Exact output may differ across versions and environments. Extension version, full machine/runtime details, and separate baseline refinement settings remain TODO.
