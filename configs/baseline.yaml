@@ -1,0 +1,30 @@
+# Recorded from original PNG metadata (00036-1872344064.png).
+# This file is documentation, not an automatically loadable NeoForge preset.
+# Actual model/LoRA availability and extension compatibility must be checked.
+
+ui: "Stable Diffusion WebUI NeoForge"
+ui_version: "neo-2.26"
+checkpoint: "reedXXXIllustrious_v160"
+checkpoint_hash: "dd984164e4"
+vae_module: "sdxl_vae"
+sampler: "Kohaku LoNyu Yog"
+sampler_extension: "https://github.com/Koishi-Star/Euler-Smea-Dyn-Sampler"
+sampler_extension_commit: null  # TODO: capture installed version
+scheduler: "Karras"
+steps: 30
+cfg_scale: 3.5
+seed: 1872344064
+width: 832
+height: 1152
+rng: "GPU"
+style_lora:
+  name: "nyalia"
+  weight: 0.6
+style_prompt_block: "TODO: insert full fixed style block after author review"
+full_positive_prompt: "TODO: fill from source PNG when ready to publish"
+full_negative_prompt: "TODO: fill from source PNG when ready to publish"
+adetailer:
+  settings: "TODO: separate documented face-refinement run"
+hires_refinement:
+  method: "TODO: verify whether Hires.fix, img2img or other upscale"
+  settings: "TODO"
