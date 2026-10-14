@@ -1,10 +1,10 @@
 # Stable Diffusion Anime Style Lab
 
-**Myon_style · NeoForge SDXL Image Generation Workflow**
+**Myon_style · NeoForge SDXL Configuration & Visual Experiments**
 
-A personal anime-style image generation project built around **Stable Diffusion WebUI NeoForge** and the **WAI-illustrious-SDX / Illustrious SDXL** model family. The focus is a structured, style-oriented generation workflow, supported by practical parameter comparisons and optional image refinement.
+A personal anime-style image generation project built around **Stable Diffusion WebUI NeoForge** and the **WAI-illustrious-SDX / Illustrious SDXL** model family. The focus is a clearly documented **generation configuration** for a consistent anime style, together with sampler and parameter comparisons and optional image refinement settings.
 
-> **Scope:** This repository documents a personal workflow and visual experiments. It does not claim a new diffusion algorithm or a completed, self-trained model.
+> **Scope:** This repository documents a personal generation setup and visual experiments. It does not claim a new diffusion algorithm or a completed, self-trained model.
 
 ## 1. Myon_style — Visual Goal
 
@@ -18,29 +18,9 @@ The current visual result uses a **Signature Style Preset** consisting of artist
 
 **Naming distinction:** `Myon_style` names my visual style. A separate personal **Myon_style LoRA** is currently being trained and is **not** the LoRA used to produce the published examples.
 
-## 2. NeoForge SDXL Workflow
+## 2. NeoForge SDXL Configuration
 
-The workflow follows six stages:
-
-```text
-1. Model Setup           Checkpoint + built-in/default VAE + extensions
-          ↓
-2. Prompt Construction   Quality tags + six-part prompt + Signature Style Preset
-          ↓
-3. Sampling Setup        Kohaku LoNyu Yog + Karras + Steps + CFG
-          ↓
-4. Base Generation       Portrait resolution + seed + txt2img
-          ↓
-5. Optional Refinement   ADetailer / Hires.fix (as needed)
-          ↓
-6. Visual Evaluation     Structure + linework + shading + style consistency
-```
-
-For the detailed sequence, choices, and caveats, see [`docs/workflow.md`](docs/workflow.md). For the positive/negative prompt examples and six-part layout, see [`docs/prompt-structure.md`](docs/prompt-structure.md).
-
-## 3. Current Personal Configuration
-
-| Setting | My current workflow |
+| Setting | Current personal configuration |
 | --- | --- |
 | Interface | **Stable Diffusion WebUI NeoForge** |
 | Checkpoint family | **WAI-illustrious-SDX / WAI-Illustrious (SDXL-based)** |
@@ -54,11 +34,13 @@ For the detailed sequence, choices, and caveats, see [`docs/workflow.md`](docs/w
 | Existing style LoRA | **nyalia**, weight `0.6` (not the in-training Myon_style LoRA) |
 | ADetailer / Hires.fix | Optional refinement stages |
 
+The full positive/negative prompt examples and six-part organization are documented in [`docs/prompt-structure.md`](docs/prompt-structure.md). Detailed settings and refinement notes are in [`docs/workflow.md`](docs/workflow.md).
+
 For optional Hires.fix, my documented UI settings include **2× upscale**, **12 Hires steps**, **0.2 denoising**, and **Hires CFG 3**. They are preferences, not requirements for the Myon_style look.
 
 **Reference vs current settings:** The previously published Showcase/test record names `waiNSFWIllustrious_v150`, **20 steps**, CFG **3.5**, and seed `2601892452`. That historical reference is preserved in [`configs/baseline.yaml`](configs/baseline.yaml). My latest confirmed **896 × 1152** base resolution supersedes an earlier **832 × 1152** personal-settings screenshot; the exported Showcase image has no readable generation metadata, so its original base dimensions cannot be independently recovered from that export.
 
-## 4. Visual Experiments
+## 3. Visual Experiments
 
 These are **personal visual comparisons**, not quantitative benchmarks. The published grids use the same author-confirmed reference setup except for the deliberately varied setting.
 
@@ -90,7 +72,7 @@ An initial example is **already included**. It compares images labeled with dete
 
 Further notes: [`docs/comparisons.md`](docs/comparisons.md).
 
-## 5. Documentation
+## 4. Documentation
 
 | File | Purpose |
 | --- | --- |
@@ -102,10 +84,10 @@ Further notes: [`docs/comparisons.md`](docs/comparisons.md).
 | [`configs/personal-preferences.md`](configs/personal-preferences.md) | Earlier recorded personal UI settings; see latest 896 × 1152 update above |
 | [`experiments/lora-training.md`](experiments/lora-training.md) | **Myon_style LoRA training — in progress**, no released checkpoint yet |
 
-## 6. Project History & Ongoing Experiments
+## 5. Project History & Ongoing Experiments
 
 I began putting this personal workflow into practice in **July 2025** and only **recently organized and uploaded** the material to GitHub.
 
 My personal **Myon_style LoRA** is **in training**. It belongs to the project's future **Experiments** workstream; no trained weights, performance results, or completed model are claimed here. Training notes and planned documentation are tracked in [`experiments/lora-training.md`](experiments/lora-training.md).
 
-The current priority is documenting a clear **NeoForge + SDXL workflow**, with honest separation between the established generation setup, existing visual comparisons, and experiments still in progress.
+The current priority is documenting clear **NeoForge + SDXL configuration and visual comparisons**, with honest separation between the established generation setup, existing visual comparisons, and experiments still in progress.
