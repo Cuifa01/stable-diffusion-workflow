@@ -11,7 +11,7 @@ A personal anime-style image generation project built around **Stable Diffusion 
 **Myon_style** is the name I use for my preferred visual style: **cute anime portraits, soft cel shading, clean line art, expressive faces, and minimal graphic backgrounds**. I prioritize the character's face, silhouette, and cohesive shading over complex scenery.
 
 <p align="center">
-  <img src="examples/representative-result.png" alt="Myon_style representative anime illustration" width="520">
+  <img src="examples/showcase/representative-result.png" alt="Myon_style representative anime illustration" width="520">
 </p>
 
 The current visual result uses a **Signature Style Preset** consisting of artist-style tags and the existing [nyalia (Illustrious) LoRA](https://civitai.com/models/834822/nyalia-illustrious) at weight `0.6`. The exact preset is in [`style/signature-style.txt`](style/signature-style.txt).
@@ -64,7 +64,7 @@ These are **personal visual comparisons**, not quantitative benchmarks. The publ
 
 ### Sampler — Euler / Euler a / Kohaku LoNyu Yog
 
-![Sampler comparison](examples/sampler-comparison.jpg)
+![Sampler comparison](examples/comparisons/sampler-comparison.jpg)
 
 Euler has color artifacts near hair edges and less distinct layering; Euler a produces less orderly hair shading. Both show some character-structure issues. **Kohaku LoNyu Yog** gives my preferred overall result in this example.
 
@@ -72,7 +72,7 @@ Sampler implementation: [Koishi-Star/Euler-Smea-Dyn-Sampler](https://github.com/
 
 ### Sampling Steps — 5 / 10 / 15 / 20 / 30 / 40
 
-![Sampling steps comparison](examples/steps-comparison.jpg)
+![Sampling steps comparison](examples/comparisons/steps-comparison.jpg)
 
 Lower step counts look less resolved in parts of the image. **30 steps** is my current preference, while the Showcase reference used **20 steps**.
 
@@ -80,11 +80,11 @@ Lower step counts look less resolved in parts of the image. **30 steps** is my c
 
 Below **3.5**, the image appears grayer and loses some characteristic detail. Higher CFG values strengthen the outlines; **3.5** is my preferred balance, although higher values can also work.
 
-*CFG grid image is not yet in the repository; the intended path is `examples/cfg-comparison.jpg`.*
+*CFG grid image is not yet in the repository; the intended path is `examples/comparisons/cfg-comparison.jpg`.*
 
 ### ADetailer — Existing Initial Comparison
 
-![Existing ADetailer comparison](examples/adetailer-comparison.jpg)
+![Existing ADetailer comparison](examples/comparisons/adetailer-comparison.jpg)
 
 An initial example is **already included**. It compares images labeled with detector `None` and `99coins_anime_girl_face_m_seg.pt`. Full detector, mask, and inpainting settings for a rigorously documented matched OFF/ON test are not yet recorded. ADetailer is an optional part of the workflow.
 
@@ -100,11 +100,12 @@ Further notes: [`docs/comparisons.md`](docs/comparisons.md).
 | [`style/signature-style.txt`](style/signature-style.txt) | Reusable current style preset (artist tags + nyalia) |
 | [`configs/baseline.yaml`](configs/baseline.yaml) | Historical Showcase/comparison reference |
 | [`configs/personal-preferences.md`](configs/personal-preferences.md) | Earlier recorded personal UI settings; see latest 896 × 1152 update above |
+| [`experiments/lora-training.md`](experiments/lora-training.md) | **Myon_style LoRA training — in progress**, no released checkpoint yet |
 
 ## 6. Project History & Ongoing Experiments
 
 I began putting this personal workflow into practice in **July 2025** and only **recently organized and uploaded** the material to GitHub.
 
-My personal **Myon_style LoRA** is **in training**. It belongs to the project's future **Experiments** workstream; no trained weights, performance results, or completed model are claimed here.
+My personal **Myon_style LoRA** is **in training**. It belongs to the project's future **Experiments** workstream; no trained weights, performance results, or completed model are claimed here. Training notes and planned documentation are tracked in [`experiments/lora-training.md`](experiments/lora-training.md).
 
 The current priority is documenting a clear **NeoForge + SDXL workflow**, with honest separation between the established generation setup, existing visual comparisons, and experiments still in progress.

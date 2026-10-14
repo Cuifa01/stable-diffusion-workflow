@@ -56,7 +56,7 @@ The base image is generated in NeoForge using the chosen checkpoint, prompts, fi
 
 ### ADetailer
 
-I use ADetailer when the initial output needs better face or eye details. The repository **already includes** an [ADetailer comparison image](../examples/adetailer-comparison.jpg) with labels for detector `None` and `99coins_anime_girl_face_m_seg.pt`; it should not be described as an experiment that has never been attempted.
+I use ADetailer when the initial output needs better face or eye details. The repository **already includes** an [ADetailer comparison image](../examples/comparisons/adetailer-comparison.jpg) with labels for detector `None` and `99coins_anime_girl_face_m_seg.pt`; it should not be described as an experiment that has never been attempted.
 
 For a fully reproducible matched **OFF vs ON** test, additional values—masking, denoising, inpainting settings, and the exact treatment conditions—would still need to be documented. The present example is an **initial visual comparison** rather than a fully specified experiment.
 
@@ -104,4 +104,4 @@ Exact reproduction of the historical Showcase still depends on further environme
 
 ## 7. Ongoing Development
 
-The broader project began in **July 2025** and was uploaded to GitHub more recently. Training of a separate **Myon_style LoRA** is **in progress** and is treated as an **Experiments** workstream, distinct from the already documented NeoForge generation workflow. No training outcome, accuracy, or released LoRA weights are claimed.
+The broader project began in **July 2025** and was uploaded to GitHub more recently. Training of a separate **Myon_style LoRA** is **in progress** and is treated as an **Experiments** workstream, distinct from the already documented NeoForge generation workflow. No training outcome, accuracy, or released LoRA weights are claimed. See the [Myon_style LoRA training record](../experiments/lora-training.md) for status and planned documentation.

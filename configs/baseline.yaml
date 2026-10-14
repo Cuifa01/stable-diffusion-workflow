@@ -9,7 +9,7 @@ reference_scope: "historical_showcase1"
 visual_style_name: "Myon_style" # present name of the author's aesthetic; not the name of the LoRA used here
 interface: "Stable Diffusion WebUI NeoForge"
 interface_version: null # TODO: original version unconfirmed
-reference_image: "../examples/representative-result.png"
+reference_image: "../examples/showcase/representative-result.png"
 
 checkpoint: "waiNSFWIllustrious_v150" # historically documented reference, not a claim about all current WAI-Illustrious variants
 checkpoint_hash_prefix: "befc694a29" # previously documented; NOT verified in the supplied PNG
@@ -36,7 +36,7 @@ signature_style_file: "../style/signature-style.txt"
 # Refinement was optional. The published ADetailer example exists, but its full
 # matched OFF/ON experiment settings have not been documented.
 adetailer:
-  existing_example: "../examples/adetailer-comparison.jpg"
+  existing_example: "../examples/comparisons/adetailer-comparison.jpg"
   settings: "TODO: record detector, mask, denoising, and inpainting parameters for a matched test"
 hires_refinement:
   required_for_style: false

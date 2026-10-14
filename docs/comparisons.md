@@ -24,7 +24,7 @@ The **current daily-use settings** are different: regular portrait resolution **
 
 ## 1. Sampler — Euler / Euler a / Kohaku LoNyu Yog
 
-![Euler, Euler a, and Kohaku LoNyu Yog](../examples/sampler-comparison.jpg)
+![Euler, Euler a, and Kohaku LoNyu Yog](../examples/comparisons/sampler-comparison.jpg)
 
 **Euler** produces some unexpected color patches along the hair edges and less clear layering. **Euler a** has messier hair highlights and shadows. Both show some character-structure issues. In this example, **Kohaku LoNyu Yog** gives the author's preferred overall result, with cleaner structure and more coherent shading.
 
@@ -32,13 +32,13 @@ Source of the preferred sampler: [Koishi-Star/Euler-Smea-Dyn-Sampler](https://gi
 
 ## 2. Sampling Steps — 5 / 10 / 15 / 20 / 30 / 40
 
-![Sampling-step comparison](../examples/steps-comparison.jpg)
+![Sampling-step comparison](../examples/comparisons/steps-comparison.jpg)
 
 Lower-step results are less resolved in parts of the illustration. Higher step counts alter fine details but do not yield a universally linear quality increase. The historical Showcase uses **20 steps**; **30 steps** is the author's current everyday preference.
 
 ## 3. CFG — 1.0 / 2.0 / 3.0 / 3.5 / 4.0 / 4.5 / 5.0 / 6.0
 
-*The CFG comparison image is not yet in the GitHub repository. Planned location: `../examples/cfg-comparison.jpg`.*
+*The CFG comparison image is not yet in the GitHub repository. Planned location: `../examples/comparisons/cfg-comparison.jpg`.*
 
 In this comparison, CFG values **below 3.5** appear grayer and lose some of the preferred style's detail. At **3.5 and above**, colors and contours become clearer, while increasing CFG further strengthens the outlines. The author prefers **CFG 3.5** as a balance; higher tested values can also work.
 
@@ -46,7 +46,7 @@ These are style-specific visual observations, not proof that CFG 3.5 is optimal 
 
 ## 4. ADetailer — Existing Initial Comparison
 
-![Initial ADetailer comparison](../examples/adetailer-comparison.jpg)
+![Initial ADetailer comparison](../examples/comparisons/adetailer-comparison.jpg)
 
 The repository **already contains** this initial comparison. The image is labeled with detector `None` on one side and `99coins_anime_girl_face_m_seg.pt` on the other, showing a contrast in the face-refinement configuration. A fully documented **ADetailer OFF vs ON** test would still require confirmation of the actual enabled state and recording the detector, mask, denoising, inpainting, and prompt settings.
 
