@@ -1,34 +1,43 @@
-# Common reference configuration for Showcase1 and the published visual comparisons.
-# Source: author's confirmation plus previously documented Showcase settings.
-# The exported Showcase PNG supplied for this revision has no readable generation metadata.
-# This is documentation, not a directly loadable NeoForge preset.
+# Historical Showcase1 / published visual-comparison baseline.
+# This records the author's earlier confirmation and existing project notes.
+# The exported Showcase PNG has no readable generation metadata.
+# Do not overwrite this historical record with the newer Myon_style daily settings.
+# Current usage settings: personal-preferences.md (regular portrait 896 x 1152).
+# Documentation only: NOT a directly loadable NeoForge preset.
 
+reference_scope: "historical_showcase1"
+visual_style_name: "Myon_style" # present name of the author's aesthetic; not the name of the LoRA used here
 interface: "Stable Diffusion WebUI NeoForge"
-interface_version: null # TODO: verify actual version used for this comparison set
+interface_version: null # TODO: original version unconfirmed
 reference_image: "../examples/representative-result.png"
-checkpoint: "waiNSFWIllustrious_v150"
-checkpoint_hash_prefix: "befc694a29" # previously documented; not verified in re-uploaded PNG
-vae_module: null # TODO: confirm
-sampler: "Kohaku LoNyu Yog"
+
+checkpoint: "waiNSFWIllustrious_v150" # historically documented reference, not a claim about all current WAI-Illustrious variants
+checkpoint_hash_prefix: "befc694a29" # previously documented; NOT verified in the supplied PNG
+vae_module: null # historical exact VAE setting not recoverable; current workflow uses checkpoint/default VAE
+sampler: "Kohaku LoNyu Yog" # varied only in sampler comparison
 sampler_extension: "https://github.com/Koishi-Star/Euler-Smea-Dyn-Sampler"
-sampler_extension_version: null # TODO: record installed commit/version
+sampler_extension_version: null # TODO: original extension revision unconfirmed
 scheduler: "Karras"
-reference_steps: 20 # Showcase and sampler grid
-preferred_steps: 30 # author's preference; sampling-step grid varies this parameter
-cfg_scale: 3.5
-seed: 2601892452
-base_width: null # TODO: confirm, not infer from exported image dimensions
-base_height: null # TODO: confirm
-exported_showcase_width: 1479
+reference_steps: 20 # reference image/sampler-grid setting; varied in step comparison
+preferred_steps: 30 # later everyday-use preference, NOT a historical Showcase generation parameter
+cfg_scale: 3.5 # reference value; varied in CFG comparison
+seed: 2601892452 # author-confirmed reference seed
+
+base_width: null # historical initial dimensions UNKNOWN; do not copy current 896 here
+base_height: null
+exported_showcase_width: 1479 # size of provided export, not its original txt2img width
 exported_showcase_height: 2048
+
 style_lora:
-  name: "nyalia"
+  name: "nyalia" # existing external LoRA, NOT the in-training Myon_style LoRA
   weight: 0.6
 signature_style_file: "../style/signature-style.txt"
 
-# Refinements are optional for the workflow and may differ by exported example.
+# Refinement was optional. The published ADetailer example exists, but its full
+# matched OFF/ON experiment settings have not been documented.
 adetailer:
-  settings: "TODO: record face detector, denoising and mask parameters for matched test"
+  existing_example: "../examples/adetailer-comparison.jpg"
+  settings: "TODO: record detector, mask, denoising, and inpainting parameters for a matched test"
 hires_refinement:
   required_for_style: false
-  method: "TODO: verify the exact refinement pipeline for published example"
+  method: "TODO: exact refinement used for the exported Showcase not independently verified"
