@@ -1,57 +1,66 @@
-# Comparison Notes — Showcase Reference
+# Myon_style — NeoForge SDXL Visual Comparisons
 
-These are **personal visual comparisons**, not statistically controlled benchmarks or claims of general sampler superiority.
+These examples document **personal visual observations** within the **Myon_style** aesthetic, using Stable Diffusion WebUI **NeoForge** and an Illustrious SDXL-family checkpoint. They are **not statistical benchmarks** or claims of general sampler superiority.
 
-## Common reference setup
+**Style/LoRA distinction:** `Myon_style` names the author's aesthetic, not a finished custom model. The existing examples use a fixed artist-style preset and the external **nyalia** LoRA at weight `0.6`. The separately planned **Myon_style LoRA** is still in training and does not appear in these results.
 
-The author confirms that the test images use the same Showcase1 reference configuration unless a parameter is explicitly varied:
+## Reference Setup and Experimental Scope
 
-| Item | Value |
-| --- | --- |
-| Checkpoint | `waiNSFWIllustrious_v150` |
-| Sampler | Kohaku LoNyu Yog (varied in sampler grid) |
-| Scheduler | Karras |
-| Steps | 20 (varied in steps grid) |
-| CFG scale | 3.5 |
-| Seed | `2601892452` |
-| Style | Fixed Signature Style Preset with `nyalia:0.6` |
+The following are the **author-confirmed historical Showcase1 reference settings**, not metadata extracted from the uploaded PNG.
 
-These values are based on the author's confirmation and earlier repository documentation. The newly uploaded Showcase export has **no readable PNG generation metadata**. Do not describe these parameters as extracted from that file.
+| Parameter | Historical reference | Deliberately varied in |
+| --- | --- | --- |
+| Checkpoint | `waiNSFWIllustrious_v150` | Not varied in the documented grids |
+| Sampler | Kohaku LoNyu Yog | Sampler comparison |
+| Scheduler | Karras | Fixed; no scheduler comparison published |
+| Steps | **20** | Steps comparison |
+| CFG scale | **3.5** | CFG comparison |
+| Seed | `2601892452` | Not deliberately varied |
+| Style LoRA | **nyalia**, weight `0.6` | Fixed Signature Style Preset |
 
-## Sampler: Euler / Euler a / Kohaku LoNyu Yog
+The author reports that the grids use the same Showcase-style configuration except for the parameter being compared. The supplied exported Showcase image contains **no readable generation metadata**, so these settings should not be presented as independently recovered from the image.
+
+The **current daily-use settings** are different: regular portrait resolution **896 × 1152**, typically **30 steps**, CFG **3.5**, and a **WAI-Illustrious SDXL-family checkpoint above v15.0**. The older Showcase's *initial* resolution is not independently known from its exported file. See [`../configs/baseline.yaml`](../configs/baseline.yaml) for the historical record and [`../configs/personal-preferences.md`](../configs/personal-preferences.md) for current preferences.
+
+## 1. Sampler — Euler / Euler a / Kohaku LoNyu Yog
 
 ![Euler, Euler a, and Kohaku LoNyu Yog](../examples/sampler-comparison.jpg)
 
-**Euler** shows unusual color patches along the hair edges and less distinct layering. **Euler a** has cluttered highlights and shadows in the hair. Both show some character-structure issues. **Kohaku LoNyu Yog** looks cleaner overall, with more coherent structure and lighting, and remains the author's preference for this style.
+**Euler** produces some unexpected color patches along the hair edges and less clear layering. **Euler a** has messier hair highlights and shadows. Both show some character-structure issues. In this example, **Kohaku LoNyu Yog** gives the author's preferred overall result, with cleaner structure and more coherent shading.
 
-[Sampler source](https://github.com/Koishi-Star/Euler-Smea-Dyn-Sampler).
+Source of the preferred sampler: [Koishi-Star/Euler-Smea-Dyn-Sampler](https://github.com/Koishi-Star/Euler-Smea-Dyn-Sampler).
 
-## Steps: 5 / 10 / 15 / 20 / 30 / 40
+## 2. Sampling Steps — 5 / 10 / 15 / 20 / 30 / 40
 
-![Sampling step comparison](../examples/steps-comparison.jpg)
+![Sampling-step comparison](../examples/steps-comparison.jpg)
 
-The grid intentionally varies only the step setting according to the author's test design. Outputs develop different fine details and occasionally shift local features as steps increase. The Showcase reference uses 20 steps; **30 steps remains the author's preferred working setting** for this style. This preference does not establish an optimum.
+Lower-step results are less resolved in parts of the illustration. Higher step counts alter fine details but do not yield a universally linear quality increase. The historical Showcase uses **20 steps**; **30 steps** is the author's current everyday preference.
 
-## CFG: 1.0 / 2.0 / 3.0 / 3.5 / 4.0 / 4.5 / 5.0 / 6.0
+## 3. CFG — 1.0 / 2.0 / 3.0 / 3.5 / 4.0 / 4.5 / 5.0 / 6.0
 
-*Image pending: `../examples/cfg-comparison.jpg`.*
+*The CFG comparison image is not yet in the GitHub repository. Planned location: `../examples/cfg-comparison.jpg`.*
 
-The author's new CFG grid uses the same Showcase1 reference setup, with **CFG scale as the varied parameter**. In the samples **below 3.5**, the illustration looks somewhat washed out or gray and has less of the desired detail. From **3.5 upward**, the outlines and colors become clearer. Higher CFG levels emphasize the outlines further; the author prefers **3.5** as a balanced starting point, while also finding the higher tested settings usable.
+In this comparison, CFG values **below 3.5** appear grayer and lose some of the preferred style's detail. At **3.5 and above**, colors and contours become clearer, while increasing CFG further strengthens the outlines. The author prefers **CFG 3.5** as a balance; higher tested values can also work.
 
-This is a visual preference for the documented style, not a general rule about CFG scales.
+These are style-specific visual observations, not proof that CFG 3.5 is optimal in general.
 
-## Face refinement (ADetailer)
+## 4. ADetailer — Existing Initial Comparison
 
-![ADetailer configuration example](../examples/adetailer-comparison.jpg)
+![Initial ADetailer comparison](../examples/adetailer-comparison.jpg)
 
-The existing example labels the left output with detector `None` and the right output with `99coins_anime_girl_face_m_seg.pt`. It illustrates the use of targeted face refinement. A more complete comparison with recorded detector, mask, denoising, inpainting, and prompt settings remains planned.
+The repository **already contains** this initial comparison. The image is labeled with detector `None` on one side and `99coins_anime_girl_face_m_seg.pt` on the other, showing a contrast in the face-refinement configuration. A fully documented **ADetailer OFF vs ON** test would still require confirmation of the actual enabled state and recording the detector, mask, denoising, inpainting, and prompt settings.
 
-## Planned additions
+**ADetailer is an optional refinement stage** of the NeoForge workflow, not a prerequisite for Myon_style.
 
-- A further matched ADetailer OFF/ON comparison with complete settings
-- Optional high-resolution refinement before/after, using the same source image
-- Additional Signature Style Showcase examples
+## Planned Additions (Not Yet Fully Documented)
 
-## Method notes
+- Matched ADetailer OFF/ON test with a complete settings record
+- Optional Hires.fix before/after comparison using a common source
+- Additional Myon_style Showcase outputs
+- Upload of the existing CFG grid to the documented image location
 
-Only draw conclusions from visible examples and accurately recorded parameters. When testing a single variable, keep all other adjustable settings as consistent as possible. The same random seed does not force two sampling algorithms to produce the same pose or composition. Avoid inventing quantitative improvements.
+## Method Notes
+
+When comparing one variable, keep the remaining adjustable parameters fixed as far as possible. A shared random seed across samplers does **not** guarantee identical compositions. Do not infer quantitative performance gains from these qualitative image grids, and do not confuse later personal settings with the historical Showcase baseline.
+
+The separate personal **Myon_style LoRA** remains an **in-progress experiment**, not a source of the published grids.
