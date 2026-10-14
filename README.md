@@ -1,20 +1,20 @@
 # Stylized Anime Portrait Generation Workflow
 
-A personal Stable Diffusion WebUI NeoForge workflow for a consistent anime portrait aesthetic. **V0.1 is a temporary showcase** of the current style preset, selected settings, example outputs, and practical limitations.
+A personal **Stable Diffusion WebUI NeoForge** workflow focused on a distinctive anime-portrait style. **V0.1** documents the signature style preset, selected generation settings, visual comparisons, and practical limitations.
 
 ## 1. Project Overview
 
-This project documents how I use Stable Diffusion WebUI NeoForge to generate character-focused anime portraits and illustrations. It presents a practical image-generation workflow centered on my preferred visual style. It does not claim new diffusion algorithms, model training, or general performance improvements.
+This repository documents how I build character-focused anime illustrations with a consistent visual identity. The project is a record of practical workflow design and personal visual evaluation; it does **not** claim a new diffusion model, sampler, or generation algorithm.
 
 ## 2. Style Overview
 
 **Cute Anime Portrait / Soft Cel Shading / Clean Line Art / Minimal Graphic Background**
 
-The workflow is intended for portraits, character illustrations, and simple graphic backgrounds. It prioritizes a clear character focal point and a polished, stylized finish.
+My workflow favors expressive characters, readable outlines, restrained shading, and simple graphic backgrounds. Rather than increasing detail everywhere, I focus on the face, silhouette, and overall balance of the illustration.
 
 ## 3. Signature Style Preset
 
-The style is defined by one fixed combination of artist tags and a style LoRA. The full block is treated as a single **Signature Style Preset**; this version does not attribute effects to individual tags or include tag ablation experiments.
+The visual identity comes primarily from a fixed combination of artist-style tags and a style LoRA. I treat the complete combination as **one Signature Style Preset**, without attempting to isolate the influence of individual tags at this stage.
 
 ```text
 artist:tianliang duohe fangdongye,
@@ -25,81 +25,84 @@ artist:tianliang duohe fangdongye,
 <lora:nyalia:0.6>
 ```
 
-The reusable text file is [`style/signature-style.txt`](style/signature-style.txt).
+Reusable preset: [`style/signature-style.txt`](style/signature-style.txt).
 
 ## 4. Style Showcase
 
 <p align="center">
-  <img src="examples/representative-result.png" alt="Representative cute anime portrait in the project's signature style" width="520">
+  <img src="examples/representative-result.png" alt="Representative anime portrait in the signature style" width="520">
 </p>
 
-This is the representative style example. Its embedded metadata records `waiNSFWIllustrious_v150`, 20 steps, Kohaku LoNyu Yog + Karras, CFG 3.5, and `nyalia` at 0.6. It also records ADetailer and a 2× Hires pass using `4xNMKDSuperscale` (20 Hires steps, CFG 3). These are the settings for this image; the documented 30-step baseline below comes from a separate source PNG.
+This illustration serves as the **visual reference** for the comparisons below. As confirmed by the author and noted in earlier project records, the associated working setup uses **`waiNSFWIllustrious_v150`**, **Kohaku LoNyu Yog + Karras**, **20 steps**, **CFG 3.5**, **seed `2601892452`**, and **`nyalia` at 0.6**. The exported Showcase PNG supplied for this revision does not contain readable generation metadata, so these settings are recorded from the author's confirmation and the existing project notes rather than independently extracted from this export.
 
 ## 5. Sampler Comparison
 
 <p align="center">
-  <img src="examples/sampler-comparison.jpg" alt="Euler, Euler a, and Kohaku LoNyu Yog sampler comparison" width="100%">
+  <img src="examples/sampler-comparison.jpg" alt="Visual comparison of Euler, Euler a, and Kohaku LoNyu Yog" width="100%">
 </p>
 
-The grid compares **Euler**, **Euler a**, and **Kohaku LoNyu Yog**. The images also differ in pose, composition, and details, so this is a practical visual comparison rather than a controlled test. In my use, **Kohaku LoNyu Yog + Karras** is my preference for the line clarity, overall cleanliness, and visual result in this style. This is a personal observation, not a claim that it is universally better.
+Using the same reference style and generation setup, I compared **Euler**, **Euler a**, and **Kohaku LoNyu Yog**. Each produces a recognizable version of the character, but I noticed several differences that matter for my preferred style:
 
-Kohaku LoNyu Yog is provided by [Koishi-Star/Euler-Smea-Dyn-Sampler](https://github.com/Koishi-Star/Euler-Smea-Dyn-Sampler).
+- **Euler:** Small, unexpected color patches appear around parts of the hair edges, interrupting the otherwise clean silhouette.
+- **Euler a:** The highlights and shadow shapes in the hair feel more scattered and visually busy, making the shading less cohesive.
+- **Kohaku LoNyu Yog:** The hair edges and shading look more coherent in this example, with fewer noticeable color artifacts and no major lighting irregularities that distract from the intended appearance.
 
-### Scheduler Comparison
+For these reasons, **Kohaku LoNyu Yog is my preferred sampler for this signature style**. The preference is based on visual judgment in my own workflow—not a claim that this sampler consistently outperforms the alternatives on other models or prompts. Sampler changes can also alter pose and composition even when the seed and other settings are kept the same.
 
-<p align="center">
-  <img src="examples/scheduler-comparison.jpg" alt="Normal, Uniform, and Karras scheduler comparison" width="100%">
-</p>
-
-The grid compares **Normal**, **Uniform**, and **Karras** from left to right. Its embedded X/Y/Z metadata lists schedule type as the varied axis with Kohaku LoNyu Yog, 20 steps, CFG 3.5, seed `2601892452`, and `waiNSFWIllustrious_v150`. Normal and Uniform show similar poses, while Karras changes the hand gesture and small background details. **Karras remains my preference** for the overall look in this example. One grid does not establish a general ranking, and composition changes make specific line-quality differences difficult to attribute.
+The sampler is available from [Koishi-Star/Euler-Smea-Dyn-Sampler](https://github.com/Koishi-Star/Euler-Smea-Dyn-Sampler). **Karras** is kept as the selected scheduler for this workflow, but no scheduler ranking is presented here.
 
 ## 6. Sampling Steps Comparison
 
 <p align="center">
-  <img src="examples/steps-comparison.jpg" alt="Sampling steps comparison at 5, 10, 15, 20, 30, and 40 steps" width="100%">
+  <img src="examples/steps-comparison.jpg" alt="Comparison of 5, 10, 15, 20, 30, and 40 sampling steps" width="100%">
 </p>
 
-The grid shows **5, 10, 15, 20, 30, and 40 steps**. In this example, the lower-step images appear less resolved, while more detail is visible at higher step counts; pose and small details vary across panels. **30 steps is my current preference**, not a mathematically optimal value or a universal recommendation.
+This grid varies the number of steps (**5, 10, 15, 20, 30, and 40**) while retaining the Showcase reference configuration for the other recorded settings. The lower-step samples look somewhat less resolved in places, while the higher-step outputs develop different small details and facial features. The change is not simply a linear increase in quality: composition and local features can shift as the step count changes.
+
+Although the Showcase reference was generated with **20 steps**, I currently prefer **30 steps** when working with this style. That is a personal quality-versus-effort choice, not a universal or mathematically optimal setting.
 
 ## 7. Workflow Configuration
 
-| Parameter | Recorded setting | Verification |
-| --- | --- | --- |
-| Interface | Stable Diffusion WebUI NeoForge | Verified in source PNG metadata (`neo-2.26`) |
-| Checkpoint | `reedXXXIllustrious_v160` (`dd984164e4`) | Verified in the recorded 30-step baseline PNG metadata |
-| Sampler | Kohaku LoNyu Yog | Verified in baseline PNG metadata |
-| Scheduler | Karras | Verified in baseline PNG metadata |
-| Steps | 30 | Verified in baseline PNG metadata; personal working setting |
-| CFG scale | 3.5 | Verified in baseline PNG metadata |
-| Style LoRA | `nyalia`, weight 0.6 | Verified in baseline PNG metadata |
-| VAE module | `sdxl_vae` | Verified in baseline PNG metadata |
+The Showcase and comparison grids use the **same author-confirmed reference setup**, except for the parameter deliberately varied in each comparison.
 
-The source image for this baseline is `00036-1872344064.png` (832 × 1152; seed `1872344064`). The source image is not redistributed here. The Showcase image uses a different checkpoint and 20 steps, as noted above. See [`configs/baseline.yaml`](configs/baseline.yaml) for the recorded fields and remaining TODOs.
+| Parameter | Reference setup | Notes |
+| --- | --- | --- |
+| Interface | Stable Diffusion WebUI NeoForge | Exact installed version should be recorded for future reproduction |
+| Checkpoint | `waiNSFWIllustrious_v150` | Previously documented for the Showcase; differs from the older `reedXXXIllustrious_v160` example |
+| Sampler | Kohaku LoNyu Yog | Varied only in the sampler comparison |
+| Scheduler | Karras | Fixed preference; no scheduler comparison included |
+| Steps | 20 | Showcase and sampler-grid reference; deliberately varied in the step grid |
+| CFG scale | 3.5 | Fixed reference value |
+| Seed | `2601892452` | Same seed across the test images, as confirmed by the author |
+| Signature Style LoRA | `nyalia`, weight 0.6 | Part of the fixed style preset |
+| VAE / initial resolution | To be confirmed | Do not infer these from the exported image size |
+
+**Reproduction note:** This table describes the author's confirmed common test setup, not independently verified metadata for every exported image. The re-uploaded Showcase PNG has no readable parameter block. See [`configs/baseline.yaml`](configs/baseline.yaml) and [`docs/workflow.md`](docs/workflow.md).
 
 ## 8. Practical Experience & Limitations
 
-- The checkpoint's original facial details do not always meet my preference, so I often use ADetailer for face refinement.
-- Complex backgrounds can produce inconsistent results in my use. This workflow therefore focuses on simple backgrounds and character-centered compositions.
-- High-resolution refinement can improve some details, but it is an **optional refinement**, not a defining part of the style.
-- The Signature Style Preset is the main style definition; high-resolution generation alone does not define the look.
+- **Face refinement:** The base model's default facial details do not always meet my expectations. I use **ADetailer** when targeted refinement improves the expression and eye details without losing the intended style.
+- **Backgrounds:** Detailed scenes have been less reliable in my own use. I therefore prefer simple color fields and limited decorative elements that keep the character as the focal point.
+- **High-resolution processing:** Upscaling or a high-resolution pass can help with selected details, but it is **optional**. Higher pixel count alone is not the goal of this style.
+- **Style priority:** The Signature Style Preset defines the desired look; sampling and refinement are practical choices made in service of that visual result.
 
-## 9. Planned Comparisons
+## 9. Additional and Planned Comparisons
 
-The following additions remain **Planned / TODO**. No results are implied by these placeholders.
+An initial [ADetailer example](examples/adetailer-comparison.jpg) is available, but a fully documented matched comparison is still planned. Future additions may include:
 
-- **ADetailer OFF vs ON:** a further matched comparison with documented settings; the current example is shown in [`examples/adetailer-comparison.jpg`](examples/adetailer-comparison.jpg).
-- **Optional Hires.fix Comparison:** identify the refinement method and compare the same source image.
-- **Additional Style Showcase Images:** add more representative examples.
+- ADetailer **OFF vs ON**, with complete face-refinement settings
+- Optional high-resolution refinement **before vs after**
+- Additional examples using the same Signature Style Preset
 
-See [`docs/comparisons.md`](docs/comparisons.md) for the comparison notes.
+See [`docs/comparisons.md`](docs/comparisons.md). No results are claimed for comparisons that have not been completed.
 
 ## 10. Reproduction Guide
 
-1. Install a compatible Stable Diffusion WebUI NeoForge version.
-2. Obtain a compatible checkpoint, VAE, and the `nyalia` LoRA from their original authorized sources. This repository does not redistribute model weights.
-3. Install the [Euler-Smea-Dyn-Sampler extension](https://github.com/Koishi-Star/Euler-Smea-Dyn-Sampler) using its upstream instructions, then select **Kohaku LoNyu Yog**.
-4. Enter the Signature Style Preset from [`style/signature-style.txt`](style/signature-style.txt) as one block in the positive prompt.
-5. For the recorded baseline, set **Karras**, **30 steps**, **CFG 3.5**, and `nyalia` at **0.6**. Select `reedXXXIllustrious_v160` if you have the same checkpoint available.
-6. Use ADetailer when face refinement is needed. Treat high-resolution refinement as optional and record its settings separately.
+1. Install a compatible version of Stable Diffusion WebUI NeoForge.
+2. Obtain `waiNSFWIllustrious_v150`, a compatible VAE, and the `nyalia` LoRA from their original sources. No model weights are redistributed here.
+3. Install the [Euler-Smea-Dyn-Sampler extension](https://github.com/Koishi-Star/Euler-Smea-Dyn-Sampler) and select **Kohaku LoNyu Yog**.
+4. Apply the full Signature Style Preset from [`style/signature-style.txt`](style/signature-style.txt).
+5. Start from **Karras**, **20 steps**, **CFG 3.5**, and **seed `2601892452`** to follow the documented Showcase reference. **30 steps** is an alternative personal preference illustrated by the step comparison.
+6. Apply ADetailer only when desired, and record any high-resolution refinement separately. Exact face-refinement, upscale, base-size, and extension-version details still need to be documented.
 
-Checkpoint and extension availability can change; check their original sources for licensing and compatibility. Exact output may vary with software versions and generation environment.
+Different extensions, software versions, or hardware configurations may produce different results even when these recorded settings match.
