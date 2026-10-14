@@ -1,10 +1,12 @@
-# Stylized Anime Portrait Generation Workflow
+# Stable Diffusion Anime Style Lab
 
-A personal **Stable Diffusion WebUI NeoForge** workflow focused on a distinctive anime-portrait style. **V0.1** documents the signature style preset, selected generation settings, visual comparisons, and practical limitations.
+*A personal style-focused image generation project using Stable Diffusion WebUI NeoForge.*
+
+This repository brings together my **signature anime style preset**, structured prompts, sampler and parameter comparisons, image-refinement notes, and ongoing experiments. It is an evolving record of how I develop and reproduce a consistent visual style, with **personal style LoRA training currently in progress**.
 
 ## 1. Project Overview
 
-This repository documents how I build character-focused anime illustrations with a consistent visual identity. The project is a record of practical workflow design and personal visual evaluation; it does **not** claim a new diffusion model, sampler, or generation algorithm.
+The lab focuses on **cute, character-centered anime illustrations** with soft cel shading, clean line art, and minimal graphic backgrounds. It documents practical configuration choices and visual observations, not the development of a new diffusion algorithm or a completed custom model.
 
 ## 2. Style Overview
 
