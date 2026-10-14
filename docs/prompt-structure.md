@@ -1,6 +1,6 @@
 # Prompt Structure
 
-This document records my personal prompt-writing layout for **Stylized Anime Portrait Generation Workflow**. It separates scene-specific inputs from a fixed visual style preset so that camera framing, gestures, expressions, clothing, and background can be edited independently.
+This document records my personal prompt-writing layout for **Stable Diffusion Anime Style Lab**. It separates scene-specific inputs from a fixed visual style preset so that camera framing, gestures, expressions, clothing, and background can be edited independently.
 
 ## Six-part layout
 
