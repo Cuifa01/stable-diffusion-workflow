@@ -82,12 +82,13 @@ Further notes: [`docs/comparisons.md`](docs/comparisons.md).
 | [`style/signature-style.txt`](style/signature-style.txt) | Reusable current style preset (artist tags + nyalia) |
 | [`configs/baseline.yaml`](configs/baseline.yaml) | Historical Showcase/comparison reference |
 | [`configs/personal-preferences.md`](configs/personal-preferences.md) | Earlier recorded personal UI settings; see latest 896 × 1152 update above |
-| [`experiments/lora-training.md`](experiments/lora-training.md) | **Myon_style LoRA — dataset curation and training plan**, no released checkpoint yet |
+| [`experiments/lora-training.md`](experiments/lora-training.md) | **Myon_style LoRA — dataset audit, v1 training plan and evaluation tracking**; no released checkpoint yet |
+| [`configs/myonstyle-v1-initial.toml`](configs/myonstyle-v1-initial.toml) | First selected SDXL LoRA training settings (initial snapshot; local-specific values omitted) |
 
 ## 5. Project History & Ongoing Experiments
 
 I began putting this personal workflow into practice in **July 2025** and only **recently organized and uploaded** the material to GitHub.
 
-My personal **Myon_style LoRA** is currently in **dataset preparation and manual selection**. It belongs to the project's future **Experiments** workstream; no trained weights, performance results, or completed model are claimed here. Training notes and planned documentation are tracked in [`experiments/lora-training.md`](experiments/lora-training.md).
+My personal **Myon_style LoRA** has a **45-image / 45-caption dataset audit** and a documented initial training configuration; model training results are not yet confirmed. It belongs to the project's future **Experiments** workstream; no trained weights, performance results, or completed model are claimed here. Training notes and planned documentation are tracked in [`experiments/lora-training.md`](experiments/lora-training.md).
 
 The current priority is documenting clear **NeoForge + SDXL configuration and visual comparisons**, with honest separation between the established generation setup, existing visual comparisons, and experiments still in progress.
