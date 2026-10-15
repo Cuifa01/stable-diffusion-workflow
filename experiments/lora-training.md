@@ -96,12 +96,28 @@ myon-style-lora/
 - 若从一个生成模板得到近似图，训练/留出评估时按模板分组处理，避免高度相似的图同时落入两边造成虚假的泛化结论。
 - 不将整套 Hires.fix + ADetailer 流程视为“可由 LoRA 100% 替代”；实际替代程度必须用生成对比来判断。
 
+### WD14 automatic tagging decision (2026-10-15)
+
+Use the **SD-Trainer WD14 Tagger** for the **first-pass** image-to-Danbooru-caption extraction. The settings below are the selected tagging configuration; the generated captions still require manual review.
+
+| Setting | Chosen value |
+| --- | --- |
+| `interrogator_model` | `wd-vit-v3` |
+| `threshold` | **`0.5`** (confidence threshold for including predicted tags; this is a WD14 tagger setting, **not a diffusion sampler setting**) |
+| `additional_tags` | **Empty** (no automatically appended style trigger word) |
+| `replace_underscore` | **On** (replace tag underscores with spaces) |
+| `escape_tag` | **On** (escape parentheses in tags) |
+| `batch_input_recursive` | **Off** |
+| `batch_output_action_on_conflict` | `copy` (preserve existing captions instead of overwriting them) |
+
+**Procedure:** Run WD14 on the selected SFW candidate images. Inspect the same-named `.txt` files for character IDs, clothing, expression, pose, camera angle, and background. Manually remove incorrect tags and supply omitted character-specific tags. Decide on the `myonstyle` trigger token separately before training; it is **not** injected by this WD14 configuration. The threshold of `0.5` is a selected initial configuration, **not** a measured optimal value or evidence that labeling has already completed.
+
 ## 4. Training & Evaluation — To Be Confirmed
 
 | Item | Status / plan |
 | --- | --- |
 | Actual cleaned image count | **Pending** manual audit and duplicate removal |
-| Captioning method and trigger token | **Pending** final choice and verification |
+| Captioning method and trigger token | **WD14 `wd-vit-v3` with threshold `0.5` selected for initial tags; manual correction and trigger token still pending** |
 | Training checkpoint | **Pending**; consider WAI-Illustrious v15 for first compatibility test |
 | Software | **Pending**; SDXL-capable LoRA training setup required |
 | Resolution / buckets | **Proposed:** 1024-based buckets, preserving aspect ratios |
