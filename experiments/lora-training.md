@@ -90,7 +90,7 @@ myon-style-lora/
 **Caption 规则：**
 
 - 每图一个同名 `.txt`，优先使用准确的 **Danbooru-style tags**，按作者习惯以空格书写；**逐图核对**角色、外观、服饰、镜头、动作、表情、背景。
-- 可以设计一个专属触发词，例如 `myonstyle`，但需在正式训练前统一确定；**不要把候选触发词写成已经训练成功的特性**。
+- 本轮 WD14 的 `additional_tags` 设为 **`Myonstyle`**（大小写保持一致），用于在每张标注中加入候选风格触发词；训练前仍需核查标签，**不能将触发词写成已经训练成功的特性**。
 - 背景标签与实际内容一致：粉色背景写 `pink background`，不能只因为想学角色画风就误标成 `white background`。
 - `BREAK`、`<lora:...>` 和生成用的完整画师串属于**出图 Prompt/元数据**，一般不要机械复制到所有训练 Caption；Caption 重点描述可变的画面内容。
 - 若从一个生成模板得到近似图，训练/留出评估时按模板分组处理，避免高度相似的图同时落入两边造成虚假的泛化结论。
@@ -104,20 +104,20 @@ Use the **SD-Trainer WD14 Tagger** for the **first-pass** image-to-Danbooru-capt
 | --- | --- |
 | `interrogator_model` | `wd-vit-v3` |
 | `threshold` | **`0.5`** (confidence threshold for including predicted tags; this is a WD14 tagger setting, **not a diffusion sampler setting**) |
-| `additional_tags` | **Empty** (no automatically appended style trigger word) |
+| `additional_tags` | **`Myonstyle`** (exact capitalization; append to every generated caption) |
 | `replace_underscore` | **On** (replace tag underscores with spaces) |
 | `escape_tag` | **On** (escape parentheses in tags) |
 | `batch_input_recursive` | **Off** |
 | `batch_output_action_on_conflict` | `copy` (preserve existing captions instead of overwriting them) |
 
-**Procedure:** Run WD14 on the selected SFW candidate images. Inspect the same-named `.txt` files for character IDs, clothing, expression, pose, camera angle, and background. Manually remove incorrect tags and supply omitted character-specific tags. Decide on the `myonstyle` trigger token separately before training; it is **not** injected by this WD14 configuration. The threshold of `0.5` is a selected initial configuration, **not** a measured optimal value or evidence that labeling has already completed.
+**Procedure:** Run WD14 on the selected SFW candidate images. Inspect the same-named `.txt` files for character IDs, clothing, expression, pose, camera angle, and background. Manually remove incorrect tags and supply omitted character-specific tags. The proposed style trigger is **`Myonstyle`**, appended by this WD14 configuration. Verify it occurs once per caption and decide whether to keep it at training time; labeling and training have not yet been confirmed complete. The threshold of `0.5` is a selected initial configuration, **not** a measured optimal value or evidence that labeling has already completed.
 
 ## 4. Training & Evaluation — To Be Confirmed
 
 | Item | Status / plan |
 | --- | --- |
 | Actual cleaned image count | **Pending** manual audit and duplicate removal |
-| Captioning method and trigger token | **WD14 `wd-vit-v3` with threshold `0.5` selected for initial tags; manual correction and trigger token still pending** |
+| Captioning method and trigger token | **WD14 `wd-vit-v3`, threshold `0.5`, additional tag `Myonstyle` selected; automatic tagging and manual correction not yet verified complete** |
 | Training checkpoint | **Pending**; consider WAI-Illustrious v15 for first compatibility test |
 | Software | **Pending**; SDXL-capable LoRA training setup required |
 | Resolution / buckets | **Proposed:** 1024-based buckets, preserving aspect ratios |
