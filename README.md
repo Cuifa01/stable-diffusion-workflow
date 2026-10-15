@@ -16,7 +16,7 @@ A personal anime-style image generation project built around **Stable Diffusion 
 
 The current visual result uses a **Signature Style Preset** consisting of artist-style tags and the existing [nyalia (Illustrious) LoRA](https://civitai.com/models/834822/nyalia-illustrious) at weight `0.6`. The exact preset is in [`style/signature-style.txt`](style/signature-style.txt).
 
-**Naming distinction:** `Myon_style` names my visual style. A separate personal **Myon_style LoRA** is currently being trained and is **not** the LoRA used to produce the published examples.
+**Naming distinction:** `Myon_style` names my visual style. A separate personal **Myon_style LoRA** is currently in the **dataset curation stage** and is **not** the LoRA used to produce the published examples.
 
 ## 2. NeoForge SDXL Configuration
 
@@ -82,12 +82,12 @@ Further notes: [`docs/comparisons.md`](docs/comparisons.md).
 | [`style/signature-style.txt`](style/signature-style.txt) | Reusable current style preset (artist tags + nyalia) |
 | [`configs/baseline.yaml`](configs/baseline.yaml) | Historical Showcase/comparison reference |
 | [`configs/personal-preferences.md`](configs/personal-preferences.md) | Earlier recorded personal UI settings; see latest 896 × 1152 update above |
-| [`experiments/lora-training.md`](experiments/lora-training.md) | **Myon_style LoRA training — in progress**, no released checkpoint yet |
+| [`experiments/lora-training.md`](experiments/lora-training.md) | **Myon_style LoRA — dataset curation and training plan**, no released checkpoint yet |
 
 ## 5. Project History & Ongoing Experiments
 
 I began putting this personal workflow into practice in **July 2025** and only **recently organized and uploaded** the material to GitHub.
 
-My personal **Myon_style LoRA** is **in training**. It belongs to the project's future **Experiments** workstream; no trained weights, performance results, or completed model are claimed here. Training notes and planned documentation are tracked in [`experiments/lora-training.md`](experiments/lora-training.md).
+My personal **Myon_style LoRA** is currently in **dataset preparation and manual selection**. It belongs to the project's future **Experiments** workstream; no trained weights, performance results, or completed model are claimed here. Training notes and planned documentation are tracked in [`experiments/lora-training.md`](experiments/lora-training.md).
 
 The current priority is documenting clear **NeoForge + SDXL configuration and visual comparisons**, with honest separation between the established generation setup, existing visual comparisons, and experiments still in progress.
