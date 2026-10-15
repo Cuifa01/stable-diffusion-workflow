@@ -1,6 +1,6 @@
 # Myon_style LoRA Training — Dataset Curation
 
-**Status:** Dataset preparation / manual selection in progress (updated 2026-10-15). **No completed personal LoRA or verified training run is documented yet.**  
+**Status:** Dataset audit complete and first SDXL LoRA training configuration selected (updated 2026-10-15). **No completed personal LoRA or verified training run is documented yet.**  
 **Experiment:** A personal SDXL / Illustrious-oriented **Myon_style** *style LoRA*, intended to reproduce the character rendering of the finished NeoForge images.
 
 ## Scope and Model Distinction
@@ -24,10 +24,10 @@ The existing results come from **WAI-Illustrious v15 + artist-style prompt tags 
 | 连续生成参数 | **Batch size = 1，Batch count = 3**（API 对应 `batch_size=1`、`n_iter=3`）；不是一次并行处理三张 |
 | 内容边界 | 为本次训练集重新生成 **SFW** 图片，避开原有 NSFW 作品 |
 | 人工筛选进展 | **已检查 155 项，初选 43 项**（2026-10-15 用户报告；“项目”是否等于最终独立图片仍待清点） |
-| 最终数据集规模 | **尚未锁定**：43 项为当前初选，不把 60 张或 165 张当作已入库数量 |
-| 训练执行 | **尚无已核实的训练完成记录或训练结果** |
+| 数据集最新核验 | **45 张图片 + 45 份同名非空 Caption；Repeats = 5**（Codex 本地核验完成，未开始训练） |
+| 首次训练参数 | [Myonstyle v1 initial TOML](../configs/myonstyle-v1-initial.toml)；已选择配置，**尚未确认训练已执行** |
 
-> **计数说明：** 165 是生成任务的理论总图片数，不等于有效训练样本数。155 / 43 是当前人工筛选的进度口径；最终应以实际图片文件、去重结果和逐图标注数为准。不要将“初选 43 项”直接宣传为“43 张正式训练集”。
+> **计数说明：** 165 是生成任务的理论总图片数，不等于有效训练样本数。155 项检查 / 43 项初选是较早的筛选记录；之后 Codex 已核验实际数据集为 **45 张图片及其 45 份同名非空 Caption**，Repeats = 5。以上是准备与文件核验结果，不是训练完成记录。
 
 ### 1.2 角色清单（11 人）
 
@@ -59,7 +59,7 @@ The existing results come from **WAI-Illustrious v15 + artist-style prompt tags 
 
 ## 2. Curation & Quality Control / 筛图标准
 
-将 43 项初选作为**待核查候选**，按以下标准决定是否正式入库：
+此前先从候选中初选了 43 项；之后本地数据集审计确认了 45 对有效图文文件。质量检查遵循以下标准：
 
 1. **符合目标画风：** 脸部比例、虹膜高光、头发分组、线条、肤色、服装明暗接近目标成品。
 2. **角色特征正确：** 发色、饰品、服装和重要识别特征没有被其他角色污染。
@@ -112,17 +112,29 @@ Use the **SD-Trainer WD14 Tagger** for the **first-pass** image-to-Danbooru-capt
 
 **Procedure:** Run WD14 on the selected SFW candidate images. Inspect the same-named `.txt` files for character IDs, clothing, expression, pose, camera angle, and background. Manually remove incorrect tags and supply omitted character-specific tags. The proposed style trigger is **`Myonstyle`**, appended by this WD14 configuration. Verify it occurs once per caption and decide whether to keep it at training time; labeling and training have not yet been confirmed complete. The threshold of `0.5` is a selected initial configuration, **not** a measured optimal value or evidence that labeling has already completed.
 
-## 4. Training & Evaluation — To Be Confirmed
+## 4. Initial Training Setup (selected, not yet run)
+
+**Versioned configuration snapshot:** [`configs/myonstyle-v1-initial.toml`](../configs/myonstyle-v1-initial.toml).
+
+This TOML preserves the **first selected SD-Trainer values** supplied on 2026-10-15. It is a planning/configuration snapshot and **not** an exported training log or evidence of a successful run. The checkpoint and dataset-location fields are placeholders to be supplied when running locally. Parameters absent from the supplied configuration (such as `vae_batch_size`, `caption_dropout_rate`, or `clip_skip`) are **not silently added**.
+
+**Confirmed dataset audit:** 45 images, 45 nonempty paired captions, zero missing/orphan/empty files, repetition folder prefix **5**. With `train_batch_size=1`, `gradient_accumulation_steps=1`, and `max_train_epochs=5`, the theoretical step count is **45 × 5 × 5 = 1,125**. Actual steps and training success are to be confirmed from trainer logs.
+
+**Core selected choices:** Standard `networks.lora`; SDXL / WAI-Illustrious v15; resolution `1024,1024` with buckets; UNet-only; network dim 32, alpha 16; UNet LR `1e-4`, AdamW8bit, cosine scheduler; BF16 mixed precision; xFormers; gradient checkpointing and latent/text-encoder-output caches enabled; FP16 safetensors saved every epoch. Do not treat these as performance-validated hyperparameters.
+
+### Training & Evaluation Status
+
+
 
 | Item | Status / plan |
 | --- | --- |
-| Actual cleaned image count | **Pending** manual audit and duplicate removal |
+| Dataset pairing and repeats | **45 image/caption pairs**, no missing or empty pairs reported; **repeats = 5** (local audit) |
 | Captioning method and trigger token | **WD14 `wd-vit-v3`, threshold `0.5`, additional tag `Myonstyle` selected; automatic tagging and manual correction not yet verified complete** |
-| Training checkpoint | **Pending**; consider WAI-Illustrious v15 for first compatibility test |
-| Software | **Pending**; SDXL-capable LoRA training setup required |
-| Resolution / buckets | **Proposed:** 1024-based buckets, preserving aspect ratios |
-| Rank, alpha, learning rate, optimizer, steps | **Not yet fixed**; benchmark short trial runs before full training |
-| Training logs and saved LoRA weights | **Not documented** |
+| Training checkpoint | **WAI-Illustrious v15 selected** for first experiment; execution not verified |
+| Software | **SD-Trainer SDXL LoRA** configuration selected; run not yet verified |
+| Resolution / buckets | **Selected:** `1024,1024`, `enable_bucket=true`, `bucket_no_upscale=true` |
+| Rank, alpha, learning rate, optimizer, steps | **Selected:** rank 32 / alpha 16, UNet LR `1e-4`, AdamW8bit, 5 epochs × 5 repeats; **~1125 optimizer steps estimated, not observed** |
+| Training logs and saved LoRA weights | **TensorBoard selected; every epoch saving planned; no completed run or checkpoints documented** |
 | Evaluation prompts, held-out tests, visual comparison | **Planned, not completed** |
 | Release/download | **None** |
 
@@ -130,10 +142,10 @@ The first evaluation should check several **characters and poses not simply copi
 
 ## 5. Next Documentation Milestones
 
-1. 将“155 项检查 / 43 项初选”转换为**真实文件计数**，生成逐图清单，列出 11 个角色和五种模板的实际分布。
+1. 已完成本地文件配对审计（45 图 / 45 Caption，Repeats 5）；继续统计 11 个角色与五种模板的实际分布。
 2. 完成 SFW 内容核查、人工质检和去重，锁定第一版训练集。
-3. 批量初标 + 人工复核 Caption，固定触发词并记录元数据。
-4. 确认训练底模、框架与参数；开始首轮实验，保留中间 checkpoints 和日志。
+3. WD14 自动初标已完成；继续人工复核 Caption、统一触发词并记录元数据。
+4. 首轮参数已存档；启动训练并核对实际训练日志，保留中间 checkpoints 和结果。
 5. 记录测试网格和失败案例，并比较是否能减少对原画师串及外部 LoRA 的依赖。
 
 ## Related Documents
@@ -142,5 +154,6 @@ The first evaluation should check several **characters and poses not simply copi
 - [Prompt Structure](../docs/prompt-structure.md)
 - [Visual Comparisons](../docs/comparisons.md)
 - [Current Signature Style Preset](../style/signature-style.txt)
+- [Myonstyle v1 Initial Training Configuration](../configs/myonstyle-v1-initial.toml)
 
 *This is a dataset and experiment plan, not evidence of a released LoRA, a novel diffusion architecture, or completed training results.*
